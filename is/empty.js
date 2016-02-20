@@ -3,7 +3,7 @@ module.exports = function isEmpty (obj) {
   var found
   if (obj.each) {
     obj.each(function (property, key) {
-      if (property._input !== null) {
+      if (property.__input !== null) {
         return (found = true)
       }
     })
