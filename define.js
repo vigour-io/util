@@ -1,5 +1,5 @@
 'use strict'
-
+var define = Object.defineProperty
 module.exports = function () {
   var val
   for (let i = 0, length = arguments.length; i < length; i++) {

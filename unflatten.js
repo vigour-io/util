@@ -1,6 +1,4 @@
 'use strict'
-var each = require('lodash/collection/each')
-
 /**
  * @function Unflatten an object with delimited keys
  * @param  {object} subject - Object that needs to be unflattened
@@ -22,4 +20,10 @@ function unflatten (obj, separator) {
     })
   })
   return newObj
+}
+
+function each (obj, fn) {
+  for(var i in obj) {
+    fn(obj, obj[i])
+  }
 }
