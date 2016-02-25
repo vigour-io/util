@@ -30,17 +30,5 @@
     "Youri Daamen <youri@vigour.io>",
     "Marcus Besjes <marcus@vigour.io>"
   ],
-  "license": "MIT",
-  "standard": {
-    "globals": [
-      "before",
-      "describe",
-      "it",
-      "beforeEach",
-      "sinon",
-      "expect",
-      "xit",
-      "chai"
-    ]
-  }
+  "license": "ISC"
 }
