@@ -11,7 +11,7 @@
   },
   "description": "Utils from vigour",
   "bugs": {
-    "url": "https://github.com/vigour-io/config/issues"
+    "url": "https://github.com/vigour-io/util/issues"
   },
   "dependencies": {
     "lodash.isnumber": "3.0.3"
