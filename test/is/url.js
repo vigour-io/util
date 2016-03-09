@@ -5,11 +5,11 @@ var isURL = require('../../is/url')
 
 var testCases = [
 // ['url',expectedResult]
-  ['boom', false],
-  ['perdu.com', true],
-  ['http://domain.ext/path?query=string', true],
-  ['https://boom.com/path?query=string%20with%20spaces', true],
-  ['https://boom.com/path?query=string%20with%20spaces#andThis', true]
+  ['boom', false, 'simple string'],
+  ['perdu.com', true, 'domain.ext'],
+  ['http://domain.ext/path?query=string', true, 'with query string'],
+  ['https://boom.com/path?query=string%20with%20spaces', true, 'with (uri encoded) spaces (%20) in query string'],
+  ['https://boom.com/path?query=string%20with%20spaces#andThis', true, 'with hash']
 ]
 
 test('isURL', function (t) {
