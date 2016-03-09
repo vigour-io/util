@@ -13,7 +13,8 @@ var testCases = [
   ['localhost', true],
   ['localhost:8080', true],
   ['192.11.222.444', true],
-  ['2001:0db8:0000:0042:0000:8a2e:0370:7334', true]
+  ['2001:0db8:0000:0042:0000:8a2e:0370:7334', true],
+  ['ws://localhost:8080', true]
 ]
 
 test('isURL', function (t) {
