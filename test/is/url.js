@@ -11,7 +11,9 @@ var testCases = [
   ['https://domain.ext/path#withHash', true],
   ['http://domain.ext/path?query=string#withHash', true],
   ['localhost', true],
-  ['localhost:8080', true]
+  ['localhost:8080', true],
+  ['192.11.222.444', true],
+  ['2001:0db8:0000:0042:0000:8a2e:0370:7334', true]
 ]
 
 test('isURL', function (t) {
