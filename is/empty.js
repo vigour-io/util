@@ -1,9 +1,10 @@
 'use strict'
 module.exports = function isEmpty (obj) {
+  var ret = true
   if (obj.each) {
     obj.each(function (property, key) {
       if (property.__input !== null) {
-        return false
+        return (ret = false)
       }
     })
   } else {
@@ -11,5 +12,5 @@ module.exports = function isEmpty (obj) {
       return false
     }
   }
-  return true
+  return ret
 }
