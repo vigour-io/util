@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+  - "5.0.0" #all the versions you want to be tested
+branches:
+  only:
+    - master #all the branches that will trigger travis
+    - develop
+sudo: required
+services:
+  - docker
