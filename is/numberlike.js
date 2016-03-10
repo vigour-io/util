@@ -3,7 +3,7 @@ var isNumber = require('./number')
 
 module.exports = function isNumberLike (val) {
   if (val === null || val === void 0 || val === false) {
-    return
+    return false
   }
   var length = val.length
   if (!length) {
@@ -13,15 +13,29 @@ module.exports = function isNumberLike (val) {
   // charAt is faster in v8
   if (val.charAt(0) === '-') {
     if (length === 1) {
-      return
+      return false
     }
     i = 1
   }
+  var foundE = false
+  var foundPeriod = false
   for (; i < length; i++) {
     var c = val.charAt(i)
     // bit range is outside number range
-    if (c <= '/' || c >= ':') {
-      return
+    if ((c <= '/' || c >= ':')) {
+      if (c === 'e') {
+        if (foundE) {
+          return false
+        }
+        foundE = true
+      } else if (c === '.') {
+        if (foundPeriod) {
+          return false
+        }
+        foundPeriod = true
+      } else {
+        return false
+      }
     }
   }
   return true

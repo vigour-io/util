@@ -1,4 +1,4 @@
 'use strict'
-var isNumber = require('lodash.isnumber')
+var isNumber = require('lodash.isfinite')
 
 module.exports = isNumber

@@ -3,7 +3,7 @@ var test = require('tape')
 var isURL = require('../../is/url')
 
 var testCases = [
-// ['url',expectedResult]
+// ['url', expectedResult]
   ['string', false],
   ['domain.ext', true],
   ['http://domain.ext/path?query=string', true],
@@ -21,6 +21,6 @@ var testCases = [
 test('isURL', function (t) {
   t.plan(testCases.length)
   testCases.forEach(function (item) {
-    t.equals(isURL(item[0]), item[1], item[0])
+    t.equals(isURL(item[0]), item[1], 'isURL(' + item[0] + ') === ' + item[1])
   })
 })
