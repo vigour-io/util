@@ -1,0 +1,33 @@
+'use strict'
+var test = require('tape')
+var isNumberLike = require('../../is/numberlike')
+
+var testCases = [
+// ['number', expectedResult]
+  [0, true],
+  ['0', true],
+  [1.1, true],
+  ['1.1', true],
+  [-1.1, true],
+  ['-1.1', true],
+  ['1.1.1', false],
+  [1.1e2, true],
+  ['1.1e2', true],
+  ['1e2e3', false],
+  [[], false],
+  [Number.EPSILON, true],
+  [Number.MAX_SAFE_INTEGER, true],
+  [Number.MAX_VALUE, true],
+  [Number.MIN_SAFE_INTEGER, true],
+  [Number.MIN_VALUE, true],
+  [Number.NaN, false],
+  [Number.NEGATIVE_INFINITY, false],
+  [Number.POSITIVE_INFINITY, false]
+]
+
+test('isNumberLike', function (t) {
+  t.plan(testCases.length)
+  testCases.forEach(function (item) {
+    t.equals(isNumberLike(item[0]), item[1], 'isNumberLike(' + item[0] + ') === ' + item[1])
+  })
+})
