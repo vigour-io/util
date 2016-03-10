@@ -3,7 +3,7 @@ var test = require('tape')
 var isNumberLike = require('../../is/numberlike')
 
 var testCases = [
-// ['object', expectedResult]
+// ['number', expectedResult]
   [0, true],
   ['0', true],
   [1.1, true],
@@ -24,7 +24,6 @@ var testCases = [
   [Number.NEGATIVE_INFINITY, false],
   [Number.POSITIVE_INFINITY, false]
 ]
-// isHash is just running a regexp, let's not go crazy on tests here
 
 test('isNumberLike', function (t) {
   t.plan(testCases.length)
