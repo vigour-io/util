@@ -13,34 +13,24 @@ var localParts = [
   ['boo.', false], // trailing periods in local-part
   ['boo..boo', false], // consecutive dots
   ['hello world', false], // spaces
-  ['hello\ world', true], // escaped spaces
   ['hey(ho', false], // (
-  ['hey\(ho', true], // escaped (
   ['hey,ho', false], // ,
-  ['hey\,ho', true], // escaped ,
   ['hey:ho', false], // ;
-  ['hey\:ho', true], // escaped ;
   ['hey;ho', false], // ;
-  ['hey\;ho', true], // escaped ;
   ['hey<ho', false], // <
-  ['hey\<ho', true], // escaped <
   ['hey@ho', false], // @
-  ['hey\@ho', true], // escaped @
   ['hey[ho', false], // [
-  ['hey\[ho', true], // escaped [
-  ['hey\ho', false], // [
-  ['hey\\ho', true], // escaped [
-  ['hey(comment)ho', true], // comment
-  ['(comment)heyho', true], // leading comment
-  ['heyho(comment)', true], // trailing comment
   ['hey."Jude"', true], // quoted parts
   ['hey"Jude"', false], // quoted parts
   // unicode
   ['💩', true],
   // Let's mix things up
-  ['"very.unusual.@.unusual.com"@example.com', true],
-  ['"very.(),:;<>[]\".VERY.\"very@\\ \"very\".unusual"', true]
-]
+  ['"very.unusual.@.unusual.com"@example.com', false],
+  ['"very.(),:;<>[]\".VERY.\"very@\\ \"very\".unusual"', false]
+].map(function (item) {
+  item[0] += '@vigour.io'
+  return item
+})
 
 var domainParts = [
   ['normal.com', false], // missing `@`
@@ -50,24 +40,32 @@ var domainParts = [
   ['@heyho(comment).com', true], // trailing comments
   ['@aA1-.com', true], // legal special chars
   ['@oo$oo.com', false], // illegal special chars
-  ['@' + makeChars(63) + '.' + makeChars(63) + '.com', true], // label length
-  ['@' + makeChars(64) + '.' + makeChars(64) + '.com', false], // label length (too long)
-  ['@' + makeChars(253), true], // total length
-  ['@' + makeChars(254), true], // total length (too long)
-  ['@[192.168.2.1]', true], // ip
-  ['@[IPv6:2001:db8::1]', true] // ipv6
-]
+  ['@' + makeChars(64) + '.' + makeChars(63) + '.com', true], // label length
+  ['@' + makeChars(65) + '.' + makeChars(64) + '.com', false], // label length (too long)
+  ['@' + makeChars(254), true], // total length
+  ['@' + makeChars(255), true], // total length (too long)
+  ['@[192.168.2.1]', false], // ip
+  ['@[IPv6:2001:db8::1]', false] // ipv6
+].map(function (item) {
+  item[0] = 'a' + item[0]
+  return item
+})
 
 test('isEmail', function (t) {
-  t.plan(localParts.length * domainParts.length)
+  t.plan(localParts.length + domainParts.length)
   localParts.forEach(function (localPart) {
-    domainParts.forEach(function (domainPart) {
-      t.equals(
-        isEmail(localPart[0] + domainPart[0]),
-        localPart[1] && domainPart[1],
-        'isEmail(' + truncate(localPart[0] + domainPart[0], 50) + ') === ' + (localPart[1] && domainPart[1]).toString()
-      )
-    })
+    t.equals(
+      isEmail(localPart[0]),
+      localPart[1],
+      'isEmail(' + truncate(localPart[0], 50) + ') === ' + (localPart[1]).toString()
+    )
+  })
+  domainParts.forEach(function (domainPart) {
+    t.equals(
+      isEmail(domainPart[0]),
+      domainPart[1],
+      'isEmail(' + truncate(domainPart[0], 50) + ') === ' + (domainPart[1]).toString()
+    )
   })
 })
 
