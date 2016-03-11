@@ -9,6 +9,3 @@ var email = /^[^.][a-zA-Z0-9!#$%&'*+\-/=?^_`{|}~."]{1,64}(?!\.\.)[a-zA-Z0-9!#$%&
 module.exports = function (val) {
   return typeof val === 'string' && email.test(val)
 }
-
-// so missing . as a start . as a last in the first segment
-// missing ..// , is illegal
