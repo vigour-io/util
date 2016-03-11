@@ -24,7 +24,7 @@ This is a collection of small utility functions which can be required individual
   - [url](#url)
 - [path](#path)
   - [contains](#contains)
-- [Others](#others)
+- [Other](#other)
   - [define](#define)
   - [descriptors](#descriptors)
   - [encode](#encode)
@@ -82,7 +82,7 @@ console.log(isEmail('dev@vigour.io'))
 
 ### contains
 
-## Other
+## Others
 
 ### define
 
