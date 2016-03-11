@@ -3,18 +3,18 @@ var test = require('tape')
 var Base = require('vigour-base')
 var isRemoved = require('../../is/removed')
 
-var removedBase = new Base()
-removedBase.remove()
+var b1 = new Base()
+b1.remove()
 
-var removedField = new Base({ wrong: true })
-removedField.wrong.remove()
+var b2 = new Base({ wrong: true })
+b2.wrong.remove()
 
 var testCases = [
 // ['base', expectedResult]
   [new Base({}), false], // empty
   [new Base({ a: 'a' }), false],
-  [removedBase, true],
-  [removedField.wrong, true]
+  [b1, true],
+  [b2.wrong, true]
 ]
 
 test('isRemoved', function (t) {
