@@ -8,8 +8,8 @@ var testCases = [
   [{}, true],
   [{ a: 'a' }, true],
   [new Base({}), false],
-  [[], false],
-  [['a'], false],
+  [[], true],
+  [['a'], true],
   [function () {}, false]
 ]
 

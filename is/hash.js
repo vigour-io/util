@@ -1,3 +1,4 @@
 'use strict'
 var isHash = /^[a-z\d]{5,7}$/
-module.exports = (val) => isHash.test(val)
+var isNumber = require('./number')
+module.exports = (val) => !isNumber(val) && isHash.test(val)

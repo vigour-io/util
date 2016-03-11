@@ -5,21 +5,31 @@ var Duplex = stream.Duplex
 var Readable = stream.Readable
 
 module.exports = exports = function (val) {
-  return val && (
-    val instanceof Duplex ||
-    val instanceof Readable ||
-    val instanceof Writable
+  return val && typeof val === 'object' && (
+    exports.writable(val) ||
+    exports.readable(val)
   )
 }
 
 exports.readable = function (val) {
+  // console.log(val.readable, Object.keys(val))
   return val && (
-    val instanceof Readable || val instanceof Duplex
+    val instanceof Readable ||
+    val instanceof Duplex ||
+    (
+      val.readable === true &&
+      typeof val.push === 'function'
+    )
   )
 }
 
 exports.writable = function (val) {
   return val && (
-    val instanceof Writable || val instanceof Duplex
+    (val instanceof Writable) ||
+    (val instanceof Duplex) ||
+    (
+      val.writable === true &&
+      typeof val.pipe === 'function'
+    )
   )
 }

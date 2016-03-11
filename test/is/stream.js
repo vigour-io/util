@@ -46,7 +46,7 @@ test('isStream.writable', function (t) {
 
 test('isStream (super-streams)', function (t) {
   t.plan(6)
-  var req = http.get('http://perdu.com', function (res) {
+  var req = http.request('http://perdu.com', function (res) {
     t.equals(isStream(res), true, 'isStream(http.ClientResponse) === true')
     t.equals(isStream.readable(res), true, 'isStream.readable(http.ClientRequest) === true')
     t.equals(isStream.writable(res), false, 'isStream.writable(http.ClientRequest) === false')
