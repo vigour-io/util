@@ -12,13 +12,13 @@ module.exports = exports = function (val) {
 }
 
 exports.readable = function (val) {
-  // console.log(val.readable, Object.keys(val))
   return val && (
     val instanceof Readable ||
     val instanceof Duplex ||
     (
       val.readable === true &&
-      typeof val.push === 'function'
+      typeof val.push === 'function' &&
+      typeof val.on === 'function'
     )
   )
 }
@@ -29,7 +29,8 @@ exports.writable = function (val) {
     (val instanceof Duplex) ||
     (
       val.writable === true &&
-      typeof val.pipe === 'function'
+      typeof val.pipe === 'function' &&
+      typeof val.on === 'function'
     )
   )
 }

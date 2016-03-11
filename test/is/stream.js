@@ -54,6 +54,7 @@ test('isStream (super-streams)', function (t) {
   t.equals(isStream(req), true, 'isStream(http.ClientRequest) === true')
   t.equals(isStream.readable(req), false, 'isStream.readable(http.ClientRequest) === false')
   t.equals(isStream.writable(req), true, 'isStream.writable(http.ClientRequest) === true')
+  req.end()
   // from: https://nodejs.org/api/http.html#http_class_http_clientrequest
   // "The request implements the Writable Stream interface."
 })
