@@ -46,16 +46,12 @@ This is a collection of small utility functions which can be required individual
 
 ## is
 
-### email
-
-Checks whether a string is a valid e-mail address.
+### [email](is/email.js)
 
 ```javascript
 var isEmail = require('vigour-util/is/email')
-console.log(isEmail('dev@vigour..io'))
-// prints: "false"
-console.log(isEmail('dev@vigour.io'))
-// prints: "true"
+isEmail('dev@vigour..io') // returns `false`
+isEmail('dev@vigour.io') // returns `true`
 ```
 
 ### empty
