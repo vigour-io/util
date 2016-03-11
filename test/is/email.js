@@ -42,8 +42,8 @@ var domainParts = [
   ['@oo$oo.com', false], // illegal special chars
   ['@' + makeChars(64) + '.' + makeChars(63) + '.com', true], // label length
   ['@' + makeChars(65) + '.' + makeChars(64) + '.com', false], // label length (too long)
-  ['@' + makeChars(254), true], // total length
-  ['@' + makeChars(255), true], // total length (too long)
+  ['@' + makeChars(254 - 6) + '.com', false], // total length
+  ['@' + makeChars(255 - 6) + '.com', false], // total length (too long)
   ['@[192.168.2.1]', false], // ip
   ['@[IPv6:2001:db8::1]', false] // ipv6
 ].map(function (item) {

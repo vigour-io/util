@@ -1,5 +1,6 @@
 'use strict'
-var email = /^[^.][a-zA-Z0-9!#$%&'*+\-/=?^_`{|}~."]{1,64}(?!\.\.)[a-zA-Z0-9!#$%&'*+\-/=?^_`{|}~."]{1,64}[^.]@[A-Za-z0-9.-]{1,64}\.[a-zA-Z]{2,20}$/
+var email = /^([^.](?![a-zA-Z0-9!#$%&'*+\-/=?^_`{|}~]+\.\.)([a-zA-Z0-9!#$%&'*+\-/=?^_`{|}~.]+[^.])|([a-zA-Z0-9]))@([A-Za-z0-9-]{1,64}\.){1,10}[a-zA-Z]{2,64}$/
+
 /**
  * @function isEmail
  * Checks whether a string is a valid e-mail address
@@ -7,5 +8,7 @@ var email = /^[^.][a-zA-Z0-9!#$%&'*+\-/=?^_`{|}~."]{1,64}(?!\.\.)[a-zA-Z0-9!#$%&
  * @returns {boolean} `true` if `val` is a valid e-mail address, `false` otherwise
  */
 module.exports = function (val) {
-  return typeof val === 'string' && email.test(val)
+  return typeof val === 'string' && (
+    email.test(val) && val.indexOf('@') < 65 && val.length < 255
+  )
 }
