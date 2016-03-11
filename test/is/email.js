@@ -20,10 +20,10 @@ var localParts = [
   ['hey<ho', false], // <
   ['hey@ho', false], // @
   ['hey[ho', false], // [
-  ['hey."Jude"', true], // quoted parts
+  ['hey."Jude"', false], // quoted parts
   ['hey"Jude"', false], // quoted parts
   // unicode
-  ['💩', true],
+  ['💩', false],
   // Let's mix things up
   ['"very.unusual.@.unusual.com"@example.com', false],
   ['"very.(),:;<>[]\".VERY.\"very@\\ \"very\".unusual"', false]
@@ -35,9 +35,9 @@ var localParts = [
 var domainParts = [
   ['normal.com', false], // missing `@`
   ['@normal.com', true], // normal
-  ['@hey(comment)ho.com', true], // comments
-  ['@(comment)heyho.com', true], // leading comments
-  ['@heyho(comment).com', true], // trailing comments
+  ['@hey(comment)ho.com', false], // comments
+  ['@(comment)heyho.com', false], // leading comments
+  ['@heyho(comment).com', false], // trailing comments
   ['@aA1-.com', true], // legal special chars
   ['@oo$oo.com', false], // illegal special chars
   ['@' + makeChars(64) + '.' + makeChars(63) + '.com', true], // label length
