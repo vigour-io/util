@@ -6,11 +6,15 @@ var isRemoved = require('../../is/removed')
 var removedBase = new Base()
 removedBase.remove()
 
+var removedField = new Base({ wrong: true })
+removedField.wrong.remove()
+
 var testCases = [
 // ['base', expectedResult]
   [new Base({}), false], // empty
   [new Base({ a: 'a' }), false],
-  [removedBase, true]
+  [removedBase, true],
+  [removedField.wrong, true]
 ]
 
 test('isRemoved', function (t) {
