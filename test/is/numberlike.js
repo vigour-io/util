@@ -28,6 +28,6 @@ var testCases = [
 test('isNumberLike', function (t) {
   t.plan(testCases.length)
   testCases.forEach(function (item) {
-    t.equals(isNumberLike(item[0]), item[1], 'isNumberLike(' + item[0] + ') === ' + item[1])
+    t.equals(isNumberLike(item[0]), item[1], 'isNumberLike(' + JSON.stringify(item[0]) + ') === ' + item[1])
   })
 })

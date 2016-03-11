@@ -22,6 +22,6 @@ var testCases = [
 test('isHash', function (t) {
   t.plan(testCases.length)
   testCases.forEach(function (item) {
-    t.equals(isHash(item[0]), item[1], 'isHash(' + item[0].toString() + ') === ' + item[1])
+    t.equals(isHash(item[0]), item[1], 'isHash(' + JSON.stringify(item[0]) + ') === ' + item[1])
   })
 })

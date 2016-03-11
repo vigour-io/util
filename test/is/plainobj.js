@@ -16,6 +16,6 @@ var testCases = [
 test('isPlainObj', function (t) {
   t.plan(testCases.length)
   testCases.forEach(function (item) {
-    t.equals(isPlainObj(item[0]), item[1], 'isPlainObj(' + item[0].toString() + ') === ' + item[1])
+    t.equals(isPlainObj(item[0]), item[1], 'isPlainObj(' + JSON.stringify(item[0]) + ') === ' + item[1])
   })
 })

@@ -3,7 +3,6 @@ var stream = require('stream')
 var Writable = stream.Writable
 var Duplex = stream.Duplex
 var Readable = stream.Readable
-// transform, duplex, writable, readabe
 
 module.exports = exports = function (val) {
   return val && (
@@ -16,5 +15,11 @@ module.exports = exports = function (val) {
 exports.readable = function (val) {
   return val && (
     val instanceof Readable || val instanceof Duplex
+  )
+}
+
+exports.writable = function (val) {
+  return val && (
+    val instanceof Writable || val instanceof Duplex
   )
 }
