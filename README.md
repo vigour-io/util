@@ -6,7 +6,7 @@ This is a collection of small utility functions which can be required individual
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Contents**
+
 
 - [get](#get)
   - [reference](#reference)
@@ -24,7 +24,7 @@ This is a collection of small utility functions which can be required individual
   - [url](#url)
 - [path](#path)
   - [contains](#contains)
-- [Other](#other)
+- [Others](#others)
   - [define](#define)
   - [descriptors](#descriptors)
   - [encode](#encode)
