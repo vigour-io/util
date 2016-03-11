@@ -2,6 +2,10 @@
 
 # vigour-util
 
+```sh
+npm install vigour-util
+```
+
 This is a collection of small utility functions which can be required individually.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
@@ -42,7 +46,11 @@ This is a collection of small utility functions which can be required individual
 
 ## get
 
-### reference
+### [reference](get/reference.js)
+
+```javascript
+
+```
 
 ## is
 
@@ -50,56 +58,163 @@ This is a collection of small utility functions which can be required individual
 
 ```javascript
 var isEmail = require('vigour-util/is/email')
-isEmail('dev@vigour..io') // returns `false`
-isEmail('dev@vigour.io') // returns `true`
+isEmail('dev@vigour..io') // false
+isEmail('dev@vigour.io') // true
 ```
 
-### empty
+### [empty](is/empty.js)
 
-### hash
+```javascript
+var isEmpty = require('vigour-util/is/empty')
+var Base = require('vigour-base')
+isEmpty(new Base({})) // true
+isEmpty(new Base({ awesome: true })) // false
+```
 
-### node
+### [hash](is/hash.js)
 
-### number
+```javascript
+var isHash = require('vigour-util/is/hash')
+isHash('asd654') // true
+```
 
-### numberlike
+### [node](is/node.js)
 
-### plainobj
+```javascript
+var isNode = require('vigour-util/is/node')
+isNode() // true or false
+```
 
-### removed
+### [number](is/number.js)
 
-### stream
+```javascript
+var isNumber = require('vigour-util/is/number')
+isNumber(2) // true
+isNumber('2') // false
+```
 
-### touch
+### [numberlike](is/numberlike.js)
 
-### url
+```javascript
+var isNumberLike = require('vigour-util/is/numberlike')
+isNumberLike('2') // true
+isNumberLike('a') // false
+```
+
+### [plainobj](is/plainobj.js)
+
+```javascript
+var isPlainObj = require('vigour/util/is/plainobj')
+isPlainObj({}) // true
+isPlainObj(new Base({})) // false
+```
+
+### [removed](is/removed.js)
+
+```javascript
+var isRemoved = require('vigour-util/is/removed')
+var Base = require('vigour-base')
+var base = new Base({ bad: true })
+base.bad.remove()
+isRemoved(base.bad) // true
+```
+
+### [stream](is/stream.js)
+
+```javascript
+
+```
+
+### [touch](is/touch.js)
+
+```javascript
+
+```
+
+### [url](is/url.js)
+
+```javascript
+
+```
 
 ## path
 
-### contains
+### [contains](path/contains.js)
+
+```javascript
+
+```
 
 ## Others
 
-### define
+### [define](define.js)
 
-### descriptors
+```javascript
 
-### encode
+```
 
-### flatten
+### [descriptors](descriptors.js)
 
-### hash
+```javascript
 
-### include
+```
 
-### merge
+### [encode](encode.js)
 
-### quicksort
+```javascript
 
-### regenerator
+```
 
-### setwithpath
+### [flatten](flatten.js)
 
-### unflatten
+```javascript
 
-### wrapfilter
+```
+
+### [hash](hash.js)
+
+```javascript
+
+```
+
+### [include](include.js)
+
+```javascript
+
+```
+
+### [merge](merge.js)
+
+```javascript
+
+```
+
+### [quicksort](quicksort.js)
+
+```javascript
+
+```
+
+### [regenerator](regenerator.js)
+
+```javascript
+
+```
+
+### [setwithpath](setwithpath.js)
+
+```javascript
+
+```
+
+### [unflatten](unflatten.js)
+
+```javascript
+
+```
+
+### [wrapfilter](wrapfilter.js)
+
+```javascript
+
+```
