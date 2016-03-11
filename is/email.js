@@ -1,5 +1,5 @@
 'use strict'
-var email = /^[a-zA-Z0-9!#$%&'*+-/=?^_`{|}~.]{1,64}@[A-Za-z0-9.-]{1,64}\.[a-zA-Z]{2,20}$/
+var email = /^[^.][a-zA-Z0-9!#$%&'*+\-/=?^_`{|}~."]{1,64}(?!\.\.)[a-zA-Z0-9!#$%&'*+\-/=?^_`{|}~."]{1,64}[^.]@[A-Za-z0-9.-]{1,64}\.[a-zA-Z]{2,20}$/
 /**
  * @function isEmail
  * Checks whether a string is a valid e-mail address
@@ -9,3 +9,6 @@ var email = /^[a-zA-Z0-9!#$%&'*+-/=?^_`{|}~.]{1,64}@[A-Za-z0-9.-]{1,64}\.[a-zA-Z
 module.exports = function (val) {
   return typeof val === 'string' && email.test(val)
 }
+
+// so missing . as a start . as a last in the first segment
+// missing ..// , is illegal
