@@ -82,7 +82,7 @@ console.log(isEmail('dev@vigour.io'))
 
 ### contains
 
-## Others
+## Other
 
 ### define
 
