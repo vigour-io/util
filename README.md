@@ -1,3 +1,9 @@
+[![Build Status](https://travis-ci.org/vigour-io/util.svg?branch=master)](https://travis-ci.org/vigour-io/util)
+
+# vigour-util
+
+This is a collection of small utility functions which can be required individually.
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Contents**
@@ -34,12 +40,6 @@
     - [wrapfilter](#wrapfilter)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
-[![Build Status](https://travis-ci.org/vigour-io/util.svg?branch=master)](https://travis-ci.org/vigour-io/util)
-
-# vigour-util
-
-This is a collection of small utility functions which can be required individually.
 
 ## get
 
