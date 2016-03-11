@@ -24,26 +24,60 @@
 
 This is a collection of small utility functions which can be required individually.
 
-## define
+## get
 
-## descriptors
+### reference
 
-## encode
+## is
 
-## flatten
+### email
 
-## hash
+### empty
 
-## include
+### hash
 
-## merge
+### node
 
-## quicksort
+### number
 
-## regenerator
+### numberlike
 
-## setwithpath
+### plainobj
 
-## unflatten
+### removed
 
-## wrapfilter
+### stream
+
+### touch
+
+### url
+
+## path
+
+### contains
+
+## Others
+
+### define
+
+### descriptors
+
+### encode
+
+### flatten
+
+### hash
+
+### include
+
+### merge
+
+### quicksort
+
+### regenerator
+
+### setwithpath
+
+### unflatten
+
+### wrapfilter
