@@ -2,4 +2,7 @@
 var hash = require('../hash')
 var rand = ~~(Math.random() * 10000)
 var stamp = Date.now()
-exports.val = hash('n-' + process.pid + '-' + stamp + '-' + rand)
+exports.generate = function () {
+  return hash('n-' + process.pid + '-' + stamp + '-' + rand)
+}
+exports.val = exports.generate()

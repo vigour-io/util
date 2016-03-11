@@ -1,5 +1,8 @@
 'use strict'
 module.exports = function isRemoved (base) {
+  if (base === null) {
+    return true
+  }
   for (var key in base) {
     // use each for this one
     if (base.hasOwnProperty(key)) {
