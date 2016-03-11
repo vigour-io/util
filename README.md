@@ -122,19 +122,25 @@ isRemoved(base.bad) // true
 ### [stream](is/stream.js)
 
 ```javascript
-
+var stream = require('stream')
+var rs = new stream.Readable()
+var isStream = require('vigour-util/is/stream')
+isStream(rs) // true
 ```
 
 ### [touch](is/touch.js)
 
 ```javascript
-
+var isTouch = require('vigour-util/is/touch')
+isTouch() // false unless you're using a touch-enabled device
 ```
 
 ### [url](is/url.js)
 
 ```javascript
-
+var isUrl = require('vigour-util/is/url')
+isUrl('http://perdu.com') // true
+isUrl('boom') // false
 ```
 
 ## path
@@ -142,7 +148,8 @@ isRemoved(base.bad) // true
 ### [contains](path/contains.js)
 
 ```javascript
-
+var pathContains = require('vigour-util/path/contains')
+pathContains(['a','b','c'], 'b') // true
 ```
 
 ## Others
