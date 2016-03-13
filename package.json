@@ -17,7 +17,8 @@
     "url": "https://github.com/vigour-io/util/issues"
   },
   "dependencies": {
-    "lodash.isfinite": "^3.3.0"
+    "lodash.isfinite": "^3.3.0",
+    "lodash.set": "^4.0.0"
   },
   "main": "./",
   "browser": {
