@@ -30,7 +30,7 @@ var testCases = [
   [instance,
     {
       a: { configurable: true, enumerable: true, value: 'a', writable: true },
-      c: { configurable: false, enumerable: false, value: undefined, writable: false }
+      c: { configurable: false, enumerable: false, value: void 0, writable: false }
     }
   ]
 ]
