@@ -1,4 +1,7 @@
 'use strict'
+
+var _set = require('lodash.set')
+
 /**
  * @function Unflatten an object with delimited keys
  * @param  {object} subject - Object that needs to be unflattened
@@ -10,20 +13,11 @@ module.exports = unflatten
 
 function unflatten (obj, separator) {
   separator = separator || '.'
+  var dotSep = (separator === '.')
+  var re = new RegExp(separator, 'g')
   var newObj = {}
-  each(obj, function (val, keys) {
-    var partitions = keys.split(separator)
-    var result = newObj
-    var len = partitions.length - 1
-    each(partitions, function (keys, i) {
-      result = result[keys] = (i === len ? val : (result[keys] || {}))
-    })
-  })
-  return newObj
-}
-
-function each (obj, fn) {
-  for(var i in obj) {
-    fn(obj, obj[i])
+  for (let path in obj) {
+    _set(newObj, dotSep ? path : path.replace(re, '.'), obj[path])
   }
+  return newObj
 }
