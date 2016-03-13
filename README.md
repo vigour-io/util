@@ -31,16 +31,13 @@ This is a collection of small utility functions which can be required individual
 - [Others](#others)
   - [define](#define)
   - [descriptors](#descriptors)
-  - [encode](#encode)
   - [flatten](#flatten)
   - [hash](#hash-1)
   - [include](#include)
   - [merge](#merge)
-  - [quicksort](#quicksort)
   - [regenerator](#regenerator)
   - [setwithpath](#setwithpath)
   - [unflatten](#unflatten)
-  - [wrapfilter](#wrapfilter)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -163,13 +160,13 @@ pathContains(['a','b','c'], 'b') // true
 ### [descriptors](descriptors.js)
 
 ```javascript
-
-```
-
-### [encode](encode.js)
-
-```javascript
-
+var descriptors = require('vigour-util/descriptors')
+descriptors({ a: 'a' })
+/* { a:
+     { value: 'a',
+       writable: true,
+       enumerable: true,
+       configurable: true } } */
 ```
 
 ### [flatten](flatten.js)
@@ -200,12 +197,6 @@ var merge = require('vigour-util/merge')
 merge({ a: { b: 'b' } }, { a: { c: 'c' } }) // { a: { b: 'b', c: 'c' } }
 ```
 
-### [quicksort](quicksort.js)
-
-```javascript
-
-```
-
 ### [regenerator](regenerator.js)
 
 ```javascript
@@ -213,19 +204,22 @@ merge({ a: { b: 'b' } }, { a: { c: 'c' } }) // { a: { b: 'b', c: 'c' } }
 ```
 
 ### [setwithpath](setwithpath.js)
-
-```javascript
-
-```
+***Deprecated***: consider using [`lodash.set`](https://www.npmjs.com/package/lodash.set)
 
 ### [unflatten](unflatten.js)
 
 ```javascript
-
-```
-
-### [wrapfilter](wrapfilter.js)
-
-```javascript
-
+var unflatten = require('vigour-util')
+unflatten({
+  'a.b.c': 'd'
+})
+/*
+{
+  a: {
+    b: {
+      c: 'd'
+    }
+  }
+}
+*/
 ```
