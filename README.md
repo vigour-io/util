@@ -183,7 +183,8 @@ flatten({ a: { b: 'c', d: 'e' } }, '/') // { 'a/b': 'c', 'a/d': 'e'}
 ### [hash](hash.js)
 
 ```javascript
-
+var hash = require('vigour-util')
+hash('Any sting in the world!!!') // '16hck72'
 ```
 
 ### [include](include.js)
@@ -193,9 +194,10 @@ flatten({ a: { b: 'c', d: 'e' } }, '/') // { 'a/b': 'c', 'a/d': 'e'}
 ```
 
 ### [merge](merge.js)
-
+***Deprecated***: consider using [`lodash.merge`](https://www.npmjs.com/package/lodash.merge)
 ```javascript
-
+var merge = require('vigour-util/merge')
+merge({ a: { b: 'b' } }, { a: { c: 'c' } }) // { a: { b: 'b', c: 'c' } }
 ```
 
 ### [quicksort](quicksort.js)
