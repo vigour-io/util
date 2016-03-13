@@ -12,22 +12,20 @@ This is a collection of small utility functions which can be required individual
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 
-- [get](#get)
-  - [reference](#reference)
 - [is](#is)
   - [email](#email)
-  - [empty](#empty)
   - [hash](#hash)
   - [node](#node)
   - [number](#number)
   - [numberlike](#numberlike)
-  - [plainobj](#plainobj)
-  - [removed](#removed)
   - [stream](#stream)
     - [stream.readable](#streamreadable)
     - [stream.writable](#streamwritable)
   - [touch](#touch)
   - [url](#url)
+  - [plainobj](#plainobj)
+  - [removed](#removed)
+  - [empty](#empty)
 - [path](#path)
   - [contains](#contains)
 - [uuid](#uuid)
@@ -43,6 +41,8 @@ This is a collection of small utility functions which can be required individual
   - [regenerator](#regenerator)
   - [setwithpath](#setwithpath)
   - [unflatten](#unflatten)
+- [get](#get)
+  - [reference](#reference)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
