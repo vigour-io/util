@@ -7,6 +7,11 @@ Object.defineProperty(obj, 'b', {})
 
 function Super () {}
 Super.prototype.a = 'a'
+Object.defineProperty(Super.prototype, 'c', {
+  writable: false,
+  configurable: false
+})
+
 function Sub () {}
 Sub.prototype = Super.prototype
 var instance = new Sub()
@@ -23,7 +28,10 @@ var testCases = [
     { b: { configurable: false, enumerable: false, value: void 0, writable: false } }
   ],
   [instance,
-    { a: { configurable: true, enumerable: true, value: 'a', writable: true } }
+    {
+      a: { configurable: true, enumerable: true, value: 'a', writable: true },
+      c: { configurable: false, enumerable: false, value: undefined, writable: false }
+    }
   ]
 ]
 
