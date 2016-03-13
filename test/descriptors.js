@@ -1,0 +1,37 @@
+'use strict'
+
+var test = require('tape')
+var descriptors = require('../descriptors')
+var obj = {}
+Object.defineProperty(obj, 'b', {})
+
+function Super () {}
+Super.prototype.a = 'a'
+function Sub () {}
+Sub.prototype = Super.prototype
+var instance = new Sub()
+
+var testCases = [
+  [{ a: 'a' },
+    { a: { configurable: true, enumerable: true, value: 'a', writable: true } }
+  ],
+  [{ a: 'a', b: 'b' },
+    { a: { configurable: true, enumerable: true, value: 'a', writable: true },
+      b: { configurable: true, enumerable: true, value: 'b', writable: true }
+  }],
+  [obj,
+    { b: { configurable: false, enumerable: false, value: void 0, writable: false } }
+  ],
+  [instance,
+    { a: { configurable: true, enumerable: true, value: 'a', writable: true } }
+  ]
+]
+
+test('descriptors', function (t) {
+  t.plan(testCases.length)
+  testCases.forEach(function (item) {
+    t.deepEqual(descriptors(item[0]),
+      item[1],
+      'descriptors(' + JSON.stringify(item[0]) + ') === ' + JSON.stringify(item[1]))
+  })
+})
