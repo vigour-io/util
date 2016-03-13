@@ -131,15 +131,33 @@ var isStream = require('vigour-util/is/stream')
 isStream(rs) // true
 ```
 
+#### [stream.readable](is/stream.js)
+Checks whether provided argument is a readable stream
+```javascript
+var stream = require('stream')
+var rs = new stream.Readable()
+var isStream = require('vigour-util/is/stream')
+isStream.readable(rs) // true
+```
+
+#### [stream.writable](is/stream.js)
+Checks whether provided argument is a writable stream
+```javascript
+var stream = require('stream')
+var rs = new stream.Readable()
+var isStream = require('vigour-util/is/stream')
+isStream.writable(rs) // false
+```
+
 ### [touch](is/touch.js)
-Checks if we're running in a touch-enabled context.
+Checks if we're running in a touch-enabled context
 ```javascript
 var isTouch = require('vigour-util/is/touch')
 isTouch() // false unless you're using a touch-enabled device
 ```
 
 ### [url](is/url.js)
-Checks if a string is a valid `url`
+Checks if a string is a valid url
 ```javascript
 var isUrl = require('vigour-util/is/url')
 isUrl('http://perdu.com') // true
