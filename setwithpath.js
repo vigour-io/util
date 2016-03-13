@@ -1,6 +1,7 @@
 'use strict'
 
 module.exports = function setWithPath (obj, path, val, i) {
+  console.log('WARNING: `setwithpath` is deprecated')
   if (!i) {
     i = 0
   }
