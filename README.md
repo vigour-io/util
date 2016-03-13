@@ -44,6 +44,8 @@ This is a collection of small utility functions which can be required individual
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
+---
+
 ### [isEmail](is/email.js)
 Checks whether provided parameter looks like a valid e-mail address
 ```javascript
