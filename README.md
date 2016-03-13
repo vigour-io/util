@@ -1,4 +1,6 @@
 [![Build Status](https://travis-ci.org/vigour-io/util.svg?branch=master)](https://travis-ci.org/vigour-io/util)
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
+[![npm version](https://badge.fury.io/js/vigour-util.svg)](https://badge.fury.io/js/vigour-util)
 
 # vigour-util
 
