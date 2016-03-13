@@ -46,20 +46,6 @@ This is a collection of small utility functions which can be required individual
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-## get
-
-### [reference](get/reference.js)
-
-(*Specific to `vigour-base`*) Get's the referenced object
-```javascript
-var Base = require('vigour-base')
-var getReference = require('../../get/reference')
-
-var a = new Base({})
-var b = new Base(a)
-getReference(b) // a
-```
-
 ## is
 
 ### [email](is/email.js)
@@ -68,15 +54,6 @@ Checks whether provided parameter looks like a valid e-mail address
 var isEmail = require('vigour-util/is/email')
 isEmail('dev@vigour..io') // false
 isEmail('dev@vigour.io') // true
-```
-
-### [empty](is/empty.js)
-(*Specific to `vigour-base`*) Checks if a `Base` object is empty
-```javascript
-var isEmpty = require('vigour-util/is/empty')
-var Base = require('vigour-base')
-isEmpty(new Base({})) // true
-isEmpty(new Base({ awesome: true })) // false
 ```
 
 ### [hash](is/hash.js)
@@ -109,26 +86,8 @@ isNumberLike('2') // true
 isNumberLike('a') // false
 ```
 
-### [plainobj](is/plainobj.js)
-Checks whether an object is a plain object. (*Compatible with `vigour-base`*)
-```javascript
-var isPlainObj = require('vigour/util/is/plainobj')
-isPlainObj({}) // true
-isPlainObj(new Base({})) // false
-```
-
-### [removed](is/removed.js)
-(*Specific to `vigour-base`*) Checks if a property has been removed
-```javascript
-var isRemoved = require('vigour-util/is/removed')
-var Base = require('vigour-base')
-var base = new Base({ bad: true })
-base.bad.remove()
-isRemoved(base.bad) // true
-```
-
 ### [stream](is/stream.js)
-Checks whether provided argument is a stream
+Checks whether provided argument implements the stream interface
 ```javascript
 var stream = require('stream')
 var rs = new stream.Readable()
@@ -137,7 +96,7 @@ isStream(rs) // true
 ```
 
 #### [stream.readable](is/stream.js)
-Checks whether provided argument is a readable stream
+Checks whether provided argument implements the readable stream interface
 ```javascript
 var stream = require('stream')
 var rs = new stream.Readable()
@@ -146,7 +105,7 @@ isStream.readable(rs) // true
 ```
 
 #### [stream.writable](is/stream.js)
-Checks whether provided argument is a writable stream
+Checks whether provided argument implements the writable stream interface
 ```javascript
 var stream = require('stream')
 var rs = new stream.Readable()
@@ -167,6 +126,34 @@ Checks if a string is a valid url
 var isUrl = require('vigour-util/is/url')
 isUrl('http://perdu.com') // true
 isUrl('boom') // false
+```
+
+
+### [plainobj](is/plainobj.js)
+Checks whether an object is a plain object. (*Compatible with `vigour-base`*)
+```javascript
+var isPlainObj = require('vigour/util/is/plainobj')
+isPlainObj({}) // true
+isPlainObj(new Base({})) // false
+```
+
+### [removed](is/removed.js)
+(*Specific to `vigour-base`*) Checks if a property has been removed
+```javascript
+var isRemoved = require('vigour-util/is/removed')
+var Base = require('vigour-base')
+var base = new Base({ bad: true })
+base.bad.remove()
+isRemoved(base.bad) // true
+```
+
+### [empty](is/empty.js)
+(*Specific to `vigour-base`*) Checks if a `Base` object is empty
+```javascript
+var isEmpty = require('vigour-util/is/empty')
+var Base = require('vigour-base')
+isEmpty(new Base({})) // true
+isEmpty(new Base({ awesome: true })) // false
 ```
 
 ## path
@@ -284,4 +271,18 @@ unflatten({
   }
 }
 */
+```
+
+## get
+
+### [reference](get/reference.js)
+
+(*Specific to `vigour-base`*) Get's the referenced object
+```javascript
+var Base = require('vigour-base')
+var getReference = require('../../get/reference')
+
+var a = new Base({})
+var b = new Base(a)
+getReference(b) // a
 ```
