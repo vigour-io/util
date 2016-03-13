@@ -175,7 +175,9 @@ pathContains(['a','b','c'], 'b') // true
 ### [flatten](flatten.js)
 
 ```javascript
-
+var flatten = require('vigour-util/flatten')
+flatten({ a: { b: 'c', d: 'e' } }) // { 'a.b': 'c', 'a.d': 'e'}
+flatten({ a: { b: 'c', d: 'e' } }, '/') // { 'a/b': 'c', 'a/d': 'e'}
 ```
 
 ### [hash](hash.js)
