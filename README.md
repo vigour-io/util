@@ -89,7 +89,7 @@ isNode() // true or false
 ```
 
 ### [number](is/number.js)
-Checks whether provided parameter is a number
+Alias for [`lodash.isfinite`](https://www.npmjs.com/package/lodash.isfinite)
 ```javascript
 var isNumber = require('vigour-util/is/number')
 isNumber(2) // true

@@ -1,4 +1,10 @@
 'use strict'
+/**
+ * @function isRemoved
+ * Checks if a property has been removed
+ * @param {Base} base - the property to check
+ * @returns {boolean} `true` if `base` has been removed, `false` otherwise
+ */
 module.exports = function isRemoved (base) {
   if (base === null) {
     return true

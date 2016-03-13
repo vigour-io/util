@@ -4,7 +4,7 @@ var email = /^([^.](?![a-zA-Z0-9!#$%&'*+\-/=?^_`{|}~]+\.\.)([a-zA-Z0-9!#$%&'*+\-
 /**
  * @function isEmail
  * Checks whether provided parameter looks like a valid e-mail address
- * @param {string} val - the string to process
+ * @param {string} val - the string to check
  * @returns {boolean} `true` if `val` is a valid e-mail address, `false` otherwise
  */
 module.exports = function (val) {
