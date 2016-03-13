@@ -1,4 +1,9 @@
 'use strict'
+/**
+ * @function define
+ * helper for Object.defineProperty on base classes
+ * always sets configurable to true
+ */
 var define = Object.defineProperty
 module.exports = function () {
   var val
