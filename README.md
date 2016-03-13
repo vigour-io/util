@@ -24,6 +24,8 @@ This is a collection of small utility functions which can be required individual
   - [plainobj](#plainobj)
   - [removed](#removed)
   - [stream](#stream)
+    - [stream.readable](#streamreadable)
+    - [stream.writable](#streamwritable)
   - [touch](#touch)
   - [url](#url)
 - [path](#path)
