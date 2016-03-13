@@ -179,32 +179,20 @@ var pathContains = require('vigour-util/path/contains')
 pathContains(['a','awesome:b','c'], 'b') // true
 ```
 
-### [uuid](uuid/index.js)
-A unique ID
+## uuid
+
+### [uuid.val](uuid/index.js)
+A process-specific unique ID (or device-specific on browser)
 ```javascript
 var uuid = require('vigour-util/uuid')
 uuid.val // 'oj0beu'
 ```
 
 #### [uuid.generate](uuid/index.js)
-Generates a unique ID
+Generates a process-specific unique ID (or device-specific on browser)
 ```javascript
 var uuid = require('vigour-util/uuid')
 uuid.generate() // '14hdmru'
-```
-
-### [uuid (browser)](uuid/browser.js)
-A unique ID
-```javascript
-var uuid = require('vigour-util/uuid/browser')
-uuid.val // '1v2wst5'
-```
-
-#### [uuid.generate (browser)](uuid/browser.js)
-Generates a unique ID
-```javascript
-var uuid = require('vigour-util/uuid/browser')
-uuid.generate() // '1i7xjhl'
 ```
 
 ## Others
