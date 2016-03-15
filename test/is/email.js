@@ -24,6 +24,7 @@ var localParts = [
   ['hey"Jude"', false], // quoted parts
   // unicode
   ['💩', false],
+  ['aa', true],
   // Let's mix things up
   ['"very.unusual.@.unusual.com"@example.com', false],
   ['"very.(),:;<>[]\".VERY.\"very@\\ \"very\".unusual"', false]
@@ -80,7 +81,7 @@ function makeChars (nb) {
 
 function truncate (msg, max) {
   if (msg.length > max) {
-    return msg.slice(0, max) + '...'
+    return msg.slice(0, max) + '[TRUNCATED]'
   } else {
     return msg
   }
