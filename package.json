@@ -36,8 +36,10 @@
   ],
   "license": "ISC",
   "devDependencies": {
+    "browserify": "^13.0.0",
+    "nightmare": "^2.2.0",
+    "tap-difflet": "0.4.0",
     "tape": "^4.5.1",
-    "vigour-base": "^1.2.2",
-    "tap-difflet": "0.4.0"
+    "vigour-base": "^1.2.2"
   }
 }
