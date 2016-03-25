@@ -12,40 +12,6 @@ npm install vigour-util
 
 This is a collection of small utility functions which can be required individually.
 
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-### Contents
----
-
-- [isEmail](#isemail)
-- [isHash](#ishash)
-- [isNode](#isnode)
-- [isNumber](#isnumber)
-- [isNumberlike](#isnumberlike)
-- [isStream](#isstream)
-  - [isStream.readable](#isstreamreadable)
-  - [isStream.writable](#isstreamwritable)
-- [isTouch](#istouch)
-- [isUrl](#isurl)
-- [isPlainobj](#isplainobj)
-- [isRemoved](#isremoved)
-- [isEmpty](#isempty)
-- [pathContains](#pathcontains)
-- [uuid.val](#uuidval)
-  - [uuid.generate](#uuidgenerate)
-- [define](#define)
-- [descriptors](#descriptors)
-- [flatten](#flatten)
-- [hash](#hash)
-- [include](#include)
-- [merge](#merge)
-- [regenerator](#regenerator)
-- [setwithpath](#setwithpath)
-- [unflatten](#unflatten)
-- [getReference](#getreference)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 ---
 
 <!-- VDOC.jsdoc isEmail -->
