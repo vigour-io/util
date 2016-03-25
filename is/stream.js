@@ -5,10 +5,11 @@ var Duplex = stream.Duplex
 var Readable = stream.Readable
 
 /**
+ * @id isStream
  * @function isStream
  * Checks whether provided argument is a stream
  * @param {object} val - the object to check
- * @returns {boolean} `true` if `val` is a stream, `false` otherwise
+ * @returns {boolean} stream - `true` if `val` is a stream, `false` otherwise
  */
 module.exports = exports = function (val) {
   return val && typeof val === 'object' && (
@@ -18,10 +19,11 @@ module.exports = exports = function (val) {
 }
 
 /**
+ * @id isStream.readable
  * @function isStream.readable
  * Checks whether provided argument is a readable stream
  * @param {object} val - the object to check
- * @returns {boolean} `true` if `val` is a readable stream, `false` otherwise
+ * @returns {boolean} readable - `true` if `val` is a readable stream, `false` otherwise
  */
 exports.readable = function (val) {
   return val && (
@@ -36,10 +38,11 @@ exports.readable = function (val) {
 }
 
 /**
+ * @id isStream.writable
  * @function isStream.writable
  * Checks whether provided argument is a writable stream
  * @param {object} val - the object to check
- * @returns {boolean} `true` if `val` is a writable stream, `false` otherwise
+ * @returns {boolean} writable - `true` if `val` is a writable stream, `false` otherwise
  */
 exports.writable = function (val) {
   return val && (

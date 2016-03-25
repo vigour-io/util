@@ -2,9 +2,10 @@
 var hash = require('../hash')
 
 /**
+ * @id uuid.generate
  * @function uuid.generate
  * Generates a unique ID
- * @returns {string} A unique ID
+ * @returns {string} id - A unique ID
  */
 exports.generate = function () {
   var rand = ~~(Math.random() * 10000)
@@ -12,6 +13,8 @@ exports.generate = function () {
   return hash('n-' + process.pid + '-' + stamp + '-' + rand)
 }
 /**
- * exports.val is a unique ID
+ * @id uuid.val
+ * @property val
+ * A process-specific unique ID, generated on `require`
  */
 exports.val = exports.generate()

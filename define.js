@@ -1,8 +1,9 @@
 'use strict'
 /**
+ * @id define
  * @function define
- * helper for Object.defineProperty on base classes
- * always sets configurable to true
+ * Defines new (or modifies existing) properties (using [`Object.defineProperty`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty)) on an object passed to `define` as `this`, setting `configurable: true` by default
+ * @param {object} props - Properties to set
  */
 var define = Object.defineProperty
 module.exports = function () {

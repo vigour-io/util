@@ -2,9 +2,10 @@
 var hash = require('../hash')
 
 /**
+ * @id uuid.generate_browser
  * @function uuid.generate
  * Generates a unique ID
- * @returns {string} A unique ID
+ * @returns {string} id - A unique ID
  */
 exports.generate = function () {
   var rand = ~~(Math.random() * 10000)
@@ -21,6 +22,8 @@ exports.generate = function () {
 }
 
 /**
- * exports.val is a unique ID
+ * @id uuid.val_browser
+ * @property val
+ * a unique ID generated on `require`
  */
 exports.val = exports.generate()

@@ -2,10 +2,11 @@
 var isStream = require('./stream')
 
 /**
+ * @id isPlainObj
  * @function isPlainObj
- * Checks whether an object is a plain object
+ * Checks whether an object is a plain object (*Compatible with `vigour-base`*)
  * @param {object} obj - the object to check
- * @returns {boolean} `true` if `obj` is a plain object, `false` otherwise
+ * @returns {boolean} plain - `true` if *obj* is a plain object, `false` otherwise
  */
 module.exports = function isPlainObj (obj) {
   return (

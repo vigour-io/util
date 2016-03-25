@@ -1,9 +1,10 @@
 'use strict'
 var isNode = require('./node')
 /**
+ * @id isTouch
  * @function isTouch
  * Checks if we're running in a touch-enabled context
- * @returns {boolean} `true` if we're in a touch-enabled context, `false` otherwise
+ * @returns {boolean} touch - `true` if we're in a touch-enabled context, `false` otherwise
  */
 module.exports = isNode
   ? false
