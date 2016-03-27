@@ -53,7 +53,8 @@ test('isStream (super-streams)', function (t) {
   })
   t.equals(isStream(req), true, 'isStream(http.ClientRequest) === true')
   t.equals(isStream.readable(req), false, 'isStream.readable(http.ClientRequest) === false')
-  t.equals(isStream.writable(req), true, 'isStream.writable(http.ClientRequest) === true')
+  t.equals(isStream.writable(req), false, 'isStream.writable(http.ClientRequest) === false')
+  // --> not true! http://stackoverflow.com/questions/21101623/what-does-it-mean-in-node-js-by-http-clientrequest-implements-an-interface
   req.end()
   // from: https://nodejs.org/api/http.html#http_class_http_clientrequest
   // "The request implements the Writable Stream interface."
