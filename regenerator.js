@@ -8,6 +8,11 @@
  * the same directory.
  */
 
+/**
+ * @id regenerator
+ * @function regenerator
+ * Like Babel's regenerator, but much more compact. Brought to you by Facebook, but bundled in `vigour-util` for ease-of-use. See [the docs](https://github.com/facebook/regenerator)
+ */
 !(function(global) {
   "use strict";
 

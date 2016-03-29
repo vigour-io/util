@@ -3,10 +3,12 @@
 var _set = require('lodash.set')
 
 /**
- * @function Unflatten an object with delimited keys
+ * @id unflatten
+ * @function unflatten
+ * Opposite of [`flatten`](#flatten). Unflattens an object with delimited keys
  * @param  {object} subject - Object that needs to be unflattened
  * @param  {string} [seperator] - Optional seperator sign
- * @return {object} - Nested Javascript object
+ * @return {object} obj - Nested Javascript object
  */
 
 module.exports = unflatten

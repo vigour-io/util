@@ -2,10 +2,11 @@
 var isNumber = require('./number')
 
 /**
+ * @id isNumberLike
  * @function isNumberLike
  * Checks whether provided parameter looks like a number
  * @param {any} val - the value to check
- * @returns {boolean} `true` if `val` looks like a number, `false` otherwise
+ * @returns {boolean} looksLikeNumber - `true` if `val` looks like a number, `false` otherwise
  */
 module.exports = function isNumberLike (val) {
   if (val === null || val === void 0 || val === false) {

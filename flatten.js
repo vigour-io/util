@@ -2,7 +2,9 @@
 module.exports = exports = flatten
 
 /**
+ * @id flatten
  * @function Take a nested Javascript object and flatten it
+ * Transforms a deep object into an object of single depth where keys are a path and values are leafs of the original object.
  * @param  {object} subject - Object that needs to be flattened
  * @param  {string} [seperator] - Optional seperator sign
  * @return {object} - Object with delimited keys

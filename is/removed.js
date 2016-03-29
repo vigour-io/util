@@ -1,9 +1,10 @@
 'use strict'
 /**
+ * @id isRemoved
  * @function isRemoved
- * Checks if a property has been removed
+ * Checks if a property has been removed (*Specific to `vigour-base`*)
  * @param {Base} base - the property to check
- * @returns {boolean} `true` if `base` has been removed, `false` otherwise
+ * @returns {boolean} removed - `true` if *base* property has been removed, `false` otherwise
  */
 module.exports = function isRemoved (base) {
   if (base === null) {
