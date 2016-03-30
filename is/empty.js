@@ -10,7 +10,7 @@ module.exports = function isEmpty (obj) {
   var ret = true
   if (obj.each) {
     obj.each(function (property, key) {
-      if (property.__input !== null) {
+      if (property.val !== null) {
         return (ret = false)
       }
     })
