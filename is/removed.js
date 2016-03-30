@@ -25,7 +25,7 @@ module.exports = function isRemoved (base) {
       }
     }
   }
-  if (base.__input !== null) {
+  if (base.val !== null) {
     return false
   }
   return true

@@ -7,10 +7,10 @@
  * @returns {object} ref - The referenced object or `undefined`
  */
 module.exports = function (obj) {
-  var referenced = obj.__input
+  var referenced = obj.val
   if (referenced &&
     referenced._base_version &&
-    referenced.__input !== null) {
+    referenced.val !== null) {
     return referenced
   }
 }
