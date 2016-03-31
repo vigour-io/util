@@ -1,7 +1,6 @@
 'use strict'
 var test = require('tape')
 var stream = require('stream')
-var http = require('http')
 var isStream = require('../../is/stream')
 
 var testCases = [
@@ -42,20 +41,4 @@ test('isStream.writable', function (t) {
   writableCases.forEach(function (item) {
     t.equals(isStream.writable(item[0]), item[1], 'isStream.writable(' + item[2] + ') === ' + item[1])
   })
-})
-
-test('isStream (super-streams)', function (t) {
-  t.plan(6)
-  var req = http.request('http://perdu.com', function (res) {
-    t.equals(isStream(res), true, 'isStream(http.ClientResponse) === true')
-    t.equals(isStream.readable(res), true, 'isStream.readable(http.ClientRequest) === true')
-    t.equals(isStream.writable(res), false, 'isStream.writable(http.ClientRequest) === false')
-  })
-  t.equals(isStream(req), true, 'isStream(http.ClientRequest) === true')
-  t.equals(isStream.readable(req), false, 'isStream.readable(http.ClientRequest) === false')
-  t.equals(isStream.writable(req), false, 'isStream.writable(http.ClientRequest) === false')
-  // --> not true! http://stackoverflow.com/questions/21101623/what-does-it-mean-in-node-js-by-http-clientrequest-implements-an-interface
-  req.end()
-  // from: https://nodejs.org/api/http.html#http_class_http_clientrequest
-  // "The request implements the Writable Stream interface."
 })
