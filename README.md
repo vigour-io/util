@@ -12,6 +12,10 @@ npm install vigour-util
 
 This is a collection of small utility functions which can be required individually.
 
+## Running the tests
+
+`npm test` expects `vtest` to exist, so if you want to run the tests, you'll need to `npm i -g vigour-test` first, which will allow the tests to be run in the context of a browser (Nightmare). See [vigour-test](https://github.com/vigour-io/test)
+
 ---
 
 <!-- VDOC.jsdoc isEmail -->
