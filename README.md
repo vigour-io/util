@@ -396,3 +396,16 @@ var a = new Base({})
 var b = new Base(a)
 getReference(b) // a
 ```
+
+#### require
+
+Modifies `require` so that it:
+- ignores `.css` and `.less` files.
+- ignores anything with `/scratch/` in it
+- converts `package.json` to `process.cwd() + '/package.json' and `JSON.parse`s it
+
+```javascript
+require('vigour-util/require')
+require('styles.less') // ignored in node, processed elsewhere
+// Don't forget to add a browserify transform or similar for non-node
+```
