@@ -341,7 +341,7 @@ hash('Any sting in the world!!!') // '16hck72'
 Docs coming soon
 
 ### merge
-***Deprecated***: consider using [`lodash.merge`](https://www.npmjs.com/package/lodash.merge)
+***Obsolete***: This function has been removed in version 2. Use [`lodash.merge`](https://www.npmjs.com/package/lodash.merge) instead.
 
 <!-- VDOC.jsdoc regenerator -->
 <!-- DON'T EDIT THIS SECTION (including comments), INSTEAD RE-RUN `vdoc` TO UPDATE -->
@@ -351,7 +351,7 @@ Like Babel's regenerator, but much more compact. Brought to you by Facebook, but
 <!-- VDOC END -->
 
 ### setwithpath
-***Deprecated***: consider using [`lodash.set`](https://www.npmjs.com/package/lodash.set)
+***Obsolete***: This function has been removed in version 2. Use [`lodash.set`](https://www.npmjs.com/package/lodash.set) instead.
 
 <!-- VDOC.jsdoc unflatten -->
 <!-- DON'T EDIT THIS SECTION (including comments), INSTEAD RE-RUN `vdoc` TO UPDATE -->
