@@ -168,7 +168,7 @@ isUrl('boom') // false
 <!-- DON'T EDIT THIS SECTION (including comments), INSTEAD RE-RUN `vdoc` TO UPDATE -->
 #### var plain = isPlainObj(obj)
 
-Checks whether an object is a plain object (*Compatible with `vigour-base`*)
+Checks whether an object is a plain object (excludes streams, buffers, base and null) (*Compatible with `vigour-base`*)
 - **param** {*object*} obj - the object to check
 - **returns** {*boolean*} plain - `true` if *obj* is a plain object, `false` otherwise
 <!-- VDOC END -->
@@ -397,17 +397,29 @@ var b = new Base(a)
 getReference(b) // a
 ```
 
-#### require
+<!-- VDOC.jsdoc require.enhanceRequire -->
+<!-- DON'T EDIT THIS SECTION (including comments), INSTEAD RE-RUN `vdoc` TO UPDATE -->
+#### enhanceRequire(options)
 
-Modifies `require` so that it:
-- ignores `.css` and `.less` files.
-- ignores anything with `/scratch/` in it
-- converts `package.json` to `process.cwd() + '/package.json' and `JSON.parse`s it
+In node, modifies the behaviour of `require` so that it ignores paths containing `.css`, `.less`, `.scss`, `.sass`, and any other paths indicated via the `exclude` option.
+
+Outside of node (browserify, webpack, etc.), this function does nothing.
+- **param** {*object*} options - Options to further define the behaviour of `require`:
+
+- + {*boolean*} **options.package** : set to `true` to convert `require('package.json')` to `JSON.parse(require(process.cwd() + '/package.json'))`
+
+- + {*boolean|string|function*} **options.exclude** : additional paths to exclude. If a function is provided, `require` will exclude paths for which the function returns `true`
+<!-- VDOC END -->
 
 ```javascript
 var enhanceRequire = require('vigour-util/require')
-enhanceRequire()
+enhanceRequire({
+  package: true,
+  exclude: '/scratch/'
+})
 require('styles.less') // ignored in node, processed elsewhere
 // Don't forget to add a browserify transform or similar for non-node
+var pkg = require('package.json') // pkg is the parsed package from the current working directory
+require('')
 enhanceRequire.restore()
 ```
