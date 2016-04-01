@@ -6,6 +6,8 @@ var process = require('process')
 var fs = require('fs')
 var isNode = require('./is/node')
 
+var originalRequire = require
+
 if (isNode) { // else let browserify (or similar) do it
   var require = function require (path) {
     assert(typeof path === 'string', 'path must be a string')
@@ -30,7 +32,21 @@ if (isNode) { // else let browserify (or similar) do it
     return next(path)
   }
   require.next = Module.prototype.require
-  Module.prototype.require = require
+  module.exports = enhanceRequire
+} else {
+  module.exports = enhanceRequireMock
 }
 
-module.exports = {}
+function enhanceRequire (options) {
+  Module.prototype.require = require
+}
+enhanceRequire.restore = function restoreRequire () {
+  Module.prototype.require = originalRequire
+}
+
+function enhanceRequireMock (options) {
+  // Do nothing
+}
+enhanceRequireMock.restore = function restoreRequireMock () {
+  // Do nothing
+}

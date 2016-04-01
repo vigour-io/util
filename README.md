@@ -405,7 +405,9 @@ Modifies `require` so that it:
 - converts `package.json` to `process.cwd() + '/package.json' and `JSON.parse`s it
 
 ```javascript
-require('vigour-util/require')
+var enhanceRequire = require('vigour-util/require')
+enhanceRequire()
 require('styles.less') // ignored in node, processed elsewhere
 // Don't forget to add a browserify transform or similar for non-node
+enhanceRequire.restore()
 ```

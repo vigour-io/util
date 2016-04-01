@@ -40,8 +40,14 @@
   "devDependencies": {
     "browserify": "^13.0.0",
     "nightmare": "^2.2.0",
+    "node-lessify": "^0.1.1",
     "tap-difflet": "^0.4.0",
     "tape": "^4.5.1",
     "vigour-base": "^2.0.0"
+  },
+  "browserify": {
+    "transform": [
+      "node-lessify"
+    ]
   }
 }
