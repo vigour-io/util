@@ -25,7 +25,7 @@ if (isNode) { // else let browserify (or similar) do it
  * Outside of node (browserify, webpack, etc.), this function does nothing.
  * @param {object} options - Options to further define the behaviour of `require`:
  * - + {*boolean*} **options.package** : set to `true` to convert `require('package.json')` to `JSON.parse(require(process.cwd() + '/package.json'))`
- * - + {*boolean|string|function*} **options.exclude** : additional paths to exclude. If a function is provided, `require` will exclude paths for which the function returns `true`
+ * - + {*string|regexp|function|array*} **options.exclude** : paths containing the specified string, or matching the specified regexp, or for which specified function returns `true`, will be excluded. If an array is provided, each element is treated exactly the same as `options.exclude` and only paths which aren't excluded by any item will be `require`d.
  */
 function enhanceRequire (_options) {
   var options = _options || {}
