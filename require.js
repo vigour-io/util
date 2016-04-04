@@ -5,6 +5,7 @@ var assert = require('assert')
 var process = require('process')
 var fs = require('fs')
 var isNode = require('./is/node')
+var _isArray = require('lodash.isArray')
 var _isFunction = require('lodash.isfunction')
 var _isRegExp = require('lodash.isRegExp')
 var _isString = require('lodash.isString')
@@ -39,32 +40,52 @@ function enhanceRequire (_options) {
       var pckg = fs.readFileSync(process.cwd() + '/package.json')
       return JSON.parse(pckg.toString())
     }
-    if (options.exclude) {
-      if (_isFunction(options.exclude) && options.exclude(path)) {
-        return {}
-      } else if (_isRegExp(options.exclude) && options.exclude.test(path)) {
-        return {}
-      } else if (_isString(options.exclude) && path.indexOf(options.exclude) !== -1) {
-        return {}
-      }
-    }
-    if (/\.less/.test(path)) {
+    if (exclude(options.exclude, path, next)) {
       return {}
+    } else {
+      return next(path)
     }
-    if (/\.css/.test(path)) {
-      return {}
-    }
-    if (/\.scss/.test(path)) {
-      return {}
-    }
-    if (/\.sass/.test(path)) {
-      return {}
-    }
-    return next(path)
   }
   require.next = Module.prototype.require
   Module.prototype.require = require
 }
+
+function exclude (options_exclude, path) {
+  if (options_exclude) {
+    if (_isArray(options_exclude)) {
+      let excludeIt = false
+      let len = options_exclude.length
+      for (let i = 0; i < len && !excludeIt; i += 1) {
+        if (exclude(options_exclude[i], path)) {
+          excludeIt = true
+        }
+      }
+      if (excludeIt) {
+        return true
+      }
+    } else if (_isFunction(options_exclude) && options_exclude(path)) {
+      return true
+    } else if (_isRegExp(options_exclude) && options_exclude.test(path)) {
+      return true
+    } else if (_isString(options_exclude) && path.indexOf(options_exclude) !== -1) {
+      return true
+    }
+  }
+  if (/\.less/.test(path)) {
+    return true
+  }
+  if (/\.css/.test(path)) {
+    return true
+  }
+  if (/\.scss/.test(path)) {
+    return true
+  }
+  if (/\.sass/.test(path)) {
+    return true
+  }
+  return false
+}
+
 /**
  * @id require.restore
  * @function restore

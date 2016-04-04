@@ -4,7 +4,7 @@ var test = require('tape')
 var isNode = require('../is/node')
 
 test('require', function (t) {
-  t.plan(6)
+  t.plan(7)
   var enhanceRequire = require('../require')
   var count = 0
   try {
@@ -25,6 +25,7 @@ test('require', function (t) {
   t.equals(count, 0, "`require('vigour-util/require')()` makes `require` ignore styles")
 
   enhanceRequire({
+    package: true,
     exclude: '/scratch/'
   })
   count = 0
@@ -67,4 +68,24 @@ test('require', function (t) {
     count += 1
   }
   t.equals(count, isNode ? 1 : 0, "`require('vigour-util/require').restore()` should restore the original `require`")
+
+  enhanceRequire({
+    exclude: [
+      'scratch',
+      /nooo/,
+      function (item) {
+        return item.indexOf('naaay') !== -1
+      }
+    ]
+  })
+  count = 0
+  try {
+    require('./_files/scratch/this-should-be-ignored')
+    require('./_files/nooo/this-should-be-ignored')
+    require('./_files/naaay/this-should-be-ignored')
+  } catch (e) {
+    count += 1
+  }
+  t.equals(count, 0, "`require('vigour-util/require').restore()` should accept an array of ignores")
+  enhanceRequire.restore()
 })
