@@ -10,9 +10,10 @@ var _isFunction = require('lodash.isfunction')
 var _isRegExp = require('lodash.isRegExp')
 var _isString = require('lodash.isString')
 
-var originalRequire = require
+var originalRequire
 
 if (isNode) { // else let browserify (or similar) do it
+  originalRequire = Module.prototype.require
   module.exports = enhanceRequire
 } else {
   module.exports = enhanceRequireMock

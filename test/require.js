@@ -4,7 +4,7 @@ var test = require('tape')
 var isNode = require('../is/node')
 
 test('require', function (t) {
-  t.plan(7)
+  t.plan(8)
   var enhanceRequire = require('../require')
   var count = 0
   try {
@@ -22,7 +22,7 @@ test('require', function (t) {
   } catch (e) {
     count += 1
   }
-  t.equals(count, 0, "`require('vigour-util/require')()` makes `require` ignore styles")
+  t.equals(count, 0, 'makes `require` ignore styles')
 
   enhanceRequire({
     package: true,
@@ -34,7 +34,7 @@ test('require', function (t) {
   } catch (e) {
     count += 1
   }
-  t.equals(count, 0, "`require('vigour-util/require')()` makes `require` ignore excluded string")
+  t.equals(count, 0, 'makes `require` ignore excluded string')
 
   enhanceRequire({
     exclude: /\/scratch\//
@@ -45,7 +45,7 @@ test('require', function (t) {
   } catch (e) {
     count += 1
   }
-  t.equals(count, 0, "`require('vigour-util/require')()` makes `require` ignore excluded regexp")
+  t.equals(count, 0, 'makes `require` ignore excluded regexp')
 
   enhanceRequire({
     exclude: function exclude (item) {
@@ -58,7 +58,7 @@ test('require', function (t) {
   } catch (e) {
     count += 1
   }
-  t.equals(count, 0, "`require('vigour-util/require')()` makes `require` ignore excluded paths")
+  t.equals(count, 0, 'makes `require` ignore excluded paths')
 
   enhanceRequire.restore()
   count = 0
@@ -86,6 +86,15 @@ test('require', function (t) {
   } catch (e) {
     count += 1
   }
-  t.equals(count, 0, "`require('vigour-util/require').restore()` should accept an array of ignores")
+  t.equals(count, 0, 'should accept an array of ignores')
   enhanceRequire.restore()
+
+  count = 0
+  try {
+    require('path')
+  } catch (e) {
+    console.log('e', e.stack)
+    count += 1
+  }
+  t.equals(count, 0, "`require('vigour-util/require').restore()` should restore `require`s default behaviour")
 })
