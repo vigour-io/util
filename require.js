@@ -12,10 +12,10 @@ var _isString = require('lodash.isString')
 
 var originalRequire
 
-if (isNode) { // else let browserify (or similar) do it
+if (isNode) {
   originalRequire = Module.prototype.require
   module.exports = enhanceRequire
-} else {
+} else { // let browserify (or similar) do it
   module.exports = enhanceRequireMock
 }
 
