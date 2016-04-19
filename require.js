@@ -7,8 +7,8 @@ var fs = require('fs')
 var isNode = require('./is/node')
 var _isArray = require('lodash.isarray')
 var _isFunction = require('lodash.isfunction')
-var _isRegExp = require('lodash.isRegExp')
-var _isString = require('lodash.isString')
+var _isRegExp = require('lodash.isregexp')
+var _isString = require('lodash.isstring')
 
 var originalRequire
 
