@@ -1,8 +1,9 @@
-<!-- VDOC.badges travis; standard; npm -->
+<!-- VDOC.badges travis; standard; npm; coveralls -->
 <!-- DON'T EDIT THIS SECTION (including comments), INSTEAD RE-RUN `vdoc` TO UPDATE -->
 [![Build Status](https://travis-ci.org/vigour-io/util.svg?branch=master)](https://travis-ci.org/vigour-io/util)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 [![npm version](https://badge.fury.io/js/vigour-util.svg)](https://badge.fury.io/js/vigour-util)
+[![Coverage Status](https://coveralls.io/repos/github/vigour-io/util/badge.svg?branch=master)](https://coveralls.io/github/vigour-io/util?branch=master)
 
 <!-- VDOC END -->
 # vigour-util

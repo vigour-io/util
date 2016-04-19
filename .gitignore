@@ -19,6 +19,9 @@ build.html
 vendor/
 report/
 
+lib-cov
+coverage
+
 results.json
 .idea/*
 vjs.wiki
