@@ -359,8 +359,24 @@ var hash = require('vigour-util')
 hash('Any sting in the world!!!') // '16hck72'
 ```
 
-### include
-Docs coming soon
+<!-- VDOC.jsdoc include -->
+<!-- DON'T EDIT THIS SECTION (including comments), INSTEAD RE-RUN `vdoc` TO UPDATE -->
+#### var included = include(target, thing)
+
+Distinctly adds one or multiple items (in an object or array) to a target array. Doesn't duplicate items.
+- **target** (*Array*) - target array
+- **thing** - the thing to be included in the array. If object or array, it will go through it and add all values to the target array.
+- **returns** (*Array*) included - Array representing the included items (duplicates removed)
+
+<!-- VDOC END -->
+
+```javasript
+var include = require('vigour-util/include')
+var target = [1]
+include(target, [2, 1, 3]) // returns [2, 3]
+console.log(target) // logs [1, 2, 3]
+```
+
 
 ### merge
 ***Obsolete***: This function has been removed in version 2. Use [`lodash.merge`](https://www.npmjs.com/package/lodash.merge) instead.
