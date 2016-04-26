@@ -24,7 +24,7 @@ if (isNode) {
  * @function enhanceRequire
  * In node, modifies the behaviour of `require` so that it ignores paths containing `.css`, `.less`, `.scss`, `.sass`, and any other paths indicated via the `exclude` option.
  * Outside of node (browserify, webpack, etc.), this function does nothing.
- * @param {object} options - Options to further define the behaviour of `require`:
+ * @param {object} [options] - Options to further define the behaviour of `require`:
  * - + {*boolean*} **options.package** : set to `true` to convert `require('package.json')` to `JSON.parse(require(process.cwd() + '/package.json'))`
  * - + {*string|regexp|function|array*} **options.exclude** : paths containing the specified string, or matching the specified regexp, or for which specified function returns `true`, will be excluded. If an array is provided, each element is treated exactly the same as `options.exclude` and only paths which aren't excluded by any item will be `require`d.
  */

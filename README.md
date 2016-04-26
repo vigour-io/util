@@ -162,10 +162,13 @@ isTouch() // false unless you're using a touch-enabled device
 
 <!-- VDOC.jsdoc isUrl -->
 <!-- DON'T EDIT THIS SECTION (including comments), INSTEAD RE-RUN `vdoc` TO UPDATE -->
-#### var valid = isUrl(val)
+#### var valid = isUrl(val, [options])
 
 Checks if a string is a valid url
 - **val** (*string*) - the string to check
+- **[options]** (*object*) - defaults to `{}`
+
+- **options.requireProtocol** {boolean} - set to true if you only want URLs with a protocol to be considered valid. Defaults to `false`
 - **returns** (*boolean*) valid - `true` if *val* is a valid url, `false` otherwise
 
 <!-- VDOC END -->
@@ -328,7 +331,7 @@ descriptors({ a: 'a', b: 'b' })
 
 <!-- VDOC.jsdoc flatten -->
 <!-- DON'T EDIT THIS SECTION (including comments), INSTEAD RE-RUN `vdoc` TO UPDATE -->
-#### var flat = flatten(subject)
+#### var flat = flatten(subject, [seperator])
 
 Transforms a deep object into an object of single depth where keys are a path and values are leafs of the original object.
 - **subject** (*object*) - Object that needs to be flattened
@@ -394,7 +397,7 @@ Like Babel's regenerator, but much more compact. Brought to you by Facebook, but
 
 <!-- VDOC.jsdoc unflatten -->
 <!-- DON'T EDIT THIS SECTION (including comments), INSTEAD RE-RUN `vdoc` TO UPDATE -->
-#### var obj = unflatten(subject)
+#### var obj = unflatten(subject, [seperator])
 
 Opposite of [`flatten`](#flatten). Unflattens an object with delimited keys
 - **subject** (*object*) - Object that needs to be unflattened
@@ -440,12 +443,12 @@ getReference(b) // a
 
 <!-- VDOC.jsdoc require.enhanceRequire -->
 <!-- DON'T EDIT THIS SECTION (including comments), INSTEAD RE-RUN `vdoc` TO UPDATE -->
-#### enhanceRequire(options)
+#### enhanceRequire([options])
 
 In node, modifies the behaviour of `require` so that it ignores paths containing `.css`, `.less`, `.scss`, `.sass`, and any other paths indicated via the `exclude` option.
 
 Outside of node (browserify, webpack, etc.), this function does nothing.
-- **options** (*object*) - Options to further define the behaviour of `require`:
+- **[options]** (*object*) - Options to further define the behaviour of `require`:
 
 - + {*boolean*} **options.package** : set to `true` to convert `require('package.json')` to `JSON.parse(require(process.cwd() + '/package.json'))`
 
