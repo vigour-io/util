@@ -1,8 +1,9 @@
-<!-- VDOC.badges travis; standard; npm -->
+<!-- VDOC.badges travis; standard; npm; coveralls -->
 <!-- DON'T EDIT THIS SECTION (including comments), INSTEAD RE-RUN `vdoc` TO UPDATE -->
 [![Build Status](https://travis-ci.org/vigour-io/util.svg?branch=master)](https://travis-ci.org/vigour-io/util)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 [![npm version](https://badge.fury.io/js/vigour-util.svg)](https://badge.fury.io/js/vigour-util)
+[![Coverage Status](https://coveralls.io/repos/github/vigour-io/util/badge.svg?branch=master)](https://coveralls.io/github/vigour-io/util?branch=master)
 
 <!-- VDOC END -->
 # vigour-util
@@ -358,8 +359,24 @@ var hash = require('vigour-util')
 hash('Any sting in the world!!!') // '16hck72'
 ```
 
-### include
-Docs coming soon
+<!-- VDOC.jsdoc include -->
+<!-- DON'T EDIT THIS SECTION (including comments), INSTEAD RE-RUN `vdoc` TO UPDATE -->
+#### var included = include(target, thing)
+
+Distinctly adds one or multiple items (in an object or array) to a target array. Doesn't duplicate items.
+- **target** (*Array*) - target array
+- **thing** - the thing to be included in the array. If object or array, it will go through it and add all values to the target array.
+- **returns** (*Array*) included - Array representing the included items (duplicates removed)
+
+<!-- VDOC END -->
+
+```javasript
+var include = require('vigour-util/include')
+var target = [1]
+include(target, [2, 1, 3]) // returns [2, 3]
+console.log(target) // logs [1, 2, 3]
+```
+
 
 ### merge
 ***Obsolete***: This function has been removed in version 2. Use [`lodash.merge`](https://www.npmjs.com/package/lodash.merge) instead.
