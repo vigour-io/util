@@ -1,6 +1,6 @@
 {
   "name": "vigour-util",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "author": "Vigour.io <dev@vigour.io>",
   "scripts": {
     "test": "NODE_ENV=test node test | tap-difflet && vtest test | tap-difflet",
@@ -47,7 +47,14 @@
   ],
   "browserify": {
     "transform": [
-      ["babelify", { "presets": ["es2015"] }]
+      [
+        "babelify",
+        {
+          "presets": [
+            "es2015"
+          ]
+        }
+      ]
     ]
   },
   "license": "ISC",
