@@ -53,10 +53,5 @@
     "tap-difflet": "^0.4.0",
     "tape": "^4.5.1",
     "vigour-base": "^2.0.0"
-  },
-  "browserify": {
-    "transform": [
-      "node-lessify"
-    ]
   }
 }
