@@ -13,7 +13,7 @@ module.exports = function () {
     for (let key in val) {
       let definition = val[key]
       let type = typeof definition
-      if (type === 'function' || type !== 'object' || val[key]._base_version) {
+      if (type === 'function' || type !== 'object' || val[key].isBase) {
         definition = { value: definition }
       }
       definition.configurable = true

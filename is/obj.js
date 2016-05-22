@@ -7,5 +7,5 @@
  * @returns {boolean} plain - `true` if *obj* is an object (but not a base or null), `false` otherwise
  */
 module.exports = function isObj (obj) {
-  return obj && typeof obj === 'object' && !obj._base_version
+  return obj && typeof obj === 'object' && !obj.isBase
 }

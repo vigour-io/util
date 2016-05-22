@@ -12,7 +12,7 @@ var isStream = require('is-stream')
 module.exports = function isPlainObj (obj) {
   return (
     obj && typeof obj === 'object' &&
-    !obj._base_version &&
+    !obj.isBase &&
     !isBuffer(obj) &&
     !isStream(obj)
   )

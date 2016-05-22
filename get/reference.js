@@ -9,7 +9,7 @@
 module.exports = function (obj) {
   var referenced = obj.val
   if (referenced &&
-    referenced._base_version &&
+    referenced.isBase &&
     referenced.val !== null) {
     return referenced
   }
