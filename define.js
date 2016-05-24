@@ -15,7 +15,6 @@ function define () {
       let definition = val[key]
       let type = typeof definition
       if (key === 'extend' && type === 'object') {
-        console.log('lets try to extend!')
         extend(this, definition)
       } else {
         if (type === 'function' || type !== 'object' || 'isBase' in definition) {
