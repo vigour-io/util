@@ -27,7 +27,7 @@ var localParts = [
   ['aa', true],
   // Let's mix things up
   ['"very.unusual.@.unusual.com"@example.com', false],
-  ['"very.(),:;<>[]\".VERY.\"very@\\ \"very\".unusual"', false]
+  ['"very.(),:;<>[]".VERY."very@\\ "very".unusual"', false]
 ].map(function (item) {
   item[0] += '@vigour.io'
   return item

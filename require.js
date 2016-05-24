@@ -1,5 +1,4 @@
 'use strict'
-
 var Module = require('module')
 var assert = require('assert')
 var process = require('process')
@@ -51,24 +50,24 @@ function enhanceRequire (_options) {
   Module.prototype.require = require
 }
 
-function exclude (options_exclude, path) {
-  if (options_exclude) {
-    if (_isArray(options_exclude)) {
+function exclude (optionsExclude, path) {
+  if (optionsExclude) {
+    if (_isArray(optionsExclude)) {
       let excludeIt = false
-      let len = options_exclude.length
+      let len = optionsExclude.length
       for (let i = 0; i < len && !excludeIt; i += 1) {
-        if (exclude(options_exclude[i], path)) {
+        if (exclude(optionsExclude[i], path)) {
           excludeIt = true
         }
       }
       if (excludeIt) {
         return true
       }
-    } else if (_isFunction(options_exclude) && options_exclude(path)) {
+    } else if (_isFunction(optionsExclude) && optionsExclude(path)) {
       return true
-    } else if (_isRegExp(options_exclude) && options_exclude.test(path)) {
+    } else if (_isRegExp(optionsExclude) && optionsExclude.test(path)) {
       return true
-    } else if (_isString(options_exclude) && path.indexOf(options_exclude) !== -1) {
+    } else if (_isString(optionsExclude) && path.indexOf(optionsExclude) !== -1) {
       return true
     }
   }
