@@ -19,15 +19,25 @@ function define () {
       } else {
         if (type === 'function' || type !== 'object' || 'isBase' in definition) {
           definition = { value: definition }
+        } else {
+          if ('val' in definition) {
+            definition.value = definition.val
+            delete definition.val
+          }
         }
-        definition.configurable = true
-        Object.defineProperty(this, key, definition)
+        if (definition.writable && 'value' in definition) {
+          this[key] = definition.value
+        } else {
+          definition.configurable = true
+          Object.defineProperty(this, key, definition)
+        }
       }
     }
   }
 }
 
 function extend (target, val) {
+  // support deep
   for (let key in val) {
     if (typeof val[key] !== 'function') {
       throw new Error(`Expect function for extension "${key}"`)
@@ -41,6 +51,8 @@ function createExtension (val, target) {
   return function extension () {
     const len = arguments.length
     const args = new Array(len + 1)
+    // optimize by checking arguments.length, make an option with variable arguments
+    // default just ignores those (so its fast)
     args[0] = target
     for (let i = 0; i < len; i++) {
       args[i + 1] = arguments[i]
