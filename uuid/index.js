@@ -1,5 +1,5 @@
 'use strict'
-var hash = require('../hash')
+const hash = require('../hash')
 
 /**
  * @id uuid.generate
@@ -8,8 +8,8 @@ var hash = require('../hash')
  * @returns {string} id - A unique ID
  */
 exports.generate = function () {
-  var rand = ~~(Math.random() * 10000)
-  var stamp = Date.now()
+  const rand = (Math.random() * 10000) | 0
+  const stamp = Date.now()
   return hash('n-' + process.pid + '-' + stamp + '-' + rand)
 }
 /**

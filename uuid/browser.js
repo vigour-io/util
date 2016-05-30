@@ -8,7 +8,7 @@ var hash = require('../hash')
  * @returns {string} id - A unique ID
  */
 exports.generate = function () {
-  var rand = ~~(Math.random() * 10000)
+  var rand = (Math.random() * 10000) | 0
   var stamp = Date.now()
   return hash(
     'b-' +
