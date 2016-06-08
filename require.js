@@ -43,6 +43,10 @@ function enhanceRequire (_options) {
     if (exclude(options.exclude, path, next)) {
       return {}
     } else {
+      if ('package.json' === path) {
+        console.log('find top package.json not doing it now.. do it soon')
+        path = './package.json'
+      }
       return next(path)
     }
   }
