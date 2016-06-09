@@ -1,4 +1,4 @@
- 'use strict'
+'use strict'
 var Module = require('module')
 var assert = require('assert')
 var process = require('process')
