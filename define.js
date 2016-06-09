@@ -39,11 +39,20 @@ function define () {
 function extend (target, val) {
   // support deep
   for (let key in val) {
-    if (typeof val[key] !== 'function') {
+    let type = typeof val[key]
+    if (type === 'object') {
+      let value = {}
+      let obj = val[key]
+      for (let i in obj) {
+        value[i] = createExtension(obj[i], target[key][i])
+      }
+      val[key] = (target.define || define).call(target, { [key]: { value } })
+    } else if (type !== 'function') {
       throw new Error(`Expect function for extension "${key}"`)
-    }
-    val[key] = (target.define || define)
+    } else {
+      val[key] = (target.define || define)
       .call(target, { [key]: createExtension(val[key], target[key]) })
+    }
   }
 }
 
