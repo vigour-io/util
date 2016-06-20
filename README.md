@@ -358,7 +358,7 @@ Hashing utility optimized for speed, not collision avoidance. Produces alpha-num
 <!-- VDOC END -->
 
 ```javascript
-var hash = require('vigour-util')
+var hash = require('vigour-util/hash')
 hash('Any sting in the world!!!') // '16hck72'
 ```
 
