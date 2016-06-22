@@ -35,17 +35,16 @@ function enhanceRequire (_options) {
     var next = () => {
       return Module.prototype.require.next.apply(this, arguments)
     }
-    // This is dirty but probably the best solution for now
-    if (options.package && path === 'package.json') {
-      var pckg = fs.readFileSync(process.cwd() + '/package.json')
-      return JSON.parse(pckg.toString())
-    }
     if (exclude(options.exclude, path, next)) {
       return {}
     } else {
-      if (path === 'package.json') {
-        console.log('find top package.json not doing it now.. do it soon')
-        path = './package.json'
+      const mapped = options.map && options.map[path]
+      if (mapped) {
+        if (typeof mapped === 'string') {
+          path = mapped
+        } else {
+          return mapped
+        }
       }
       return next(path)
     }
