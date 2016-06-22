@@ -27,6 +27,7 @@ if (isNode) {
  * - + {*boolean*} **options.package** : set to `true` to convert `require('package.json')` to `JSON.parse(require(process.cwd() + '/package.json'))`
  * - + {*string|regexp|function|array*} **options.exclude** : paths containing the specified string, or matching the specified regexp, or for which specified function returns `true`, will be excluded. If an array is provided, each element is treated exactly the same as `options.exclude` and only paths which aren't excluded by any item will be `require`d.
  */
+
 function enhanceRequire (_options) {
   var options = _options || {}
   var require = function require (path) {
@@ -40,11 +41,14 @@ function enhanceRequire (_options) {
     } else {
       const mapped = options.map && options.map[path]
       if (mapped) {
-        if (typeof mapped === 'string') {
-          path = mapped
-        } else {
-          return mapped
-        }
+        return mapped
+        // TODO research why the string mapping doesn't work
+        // if (typeof mapped === 'string') {
+        //   path = mapped
+        //   console.log('haha jaja pathc is', path)
+        // } else {
+        //   return mapped
+        // }
       }
       return next(path)
     }

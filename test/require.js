@@ -4,7 +4,7 @@ var test = require('tape')
 var isNode = require('../is/node')
 
 test('require', function (t) {
-  t.plan(9)
+  t.plan(10)
   var enhanceRequire = require('../require')
   var count = 0
   try {
@@ -13,6 +13,14 @@ test('require', function (t) {
     count += 1
   }
   t.equals(count, isNode ? 1 : 0, "`require('vigour-util/require')` shouldn't have any effect")
+
+  enhanceRequire()
+  try {
+    var file = require('./_files/filetorequire')
+    t.ok(file.isFile, 'should have required the file normally')
+  } catch (e) {
+    t.fail('failed to require a normal file:' + e.stack)
+  }
 
   enhanceRequire()
   count = 0
@@ -62,13 +70,26 @@ test('require', function (t) {
   enhanceRequire({
     map: {'package.json': { isPackage: true }}
   })
-
+  var pkg
   try {
-    var pkg = require('package.json')
+    pkg = require('package.json')
     t.ok(pkg.isPackage, 'should require the mapped object')
   } catch (e) {
     t.fail('crashed when requiring mapped object')
   }
+
+  // TODO research why string map doesnt work and then maybe put back this feature
+  // enhanceRequire({
+  //   map: {'specialfile': './filetorequire'}
+  // })
+  //
+  // try {
+  //   pkg = require('specialfile')
+  //   t.ok(pkg.isFile, 'should require file using mapped string')
+  // } catch (e) {
+  //   console.log('err', e)
+  //   t.fail('crashed when requiring mapped string')
+  // }
 
   enhanceRequire.restore()
   count = 0
