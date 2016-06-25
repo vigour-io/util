@@ -1,7 +1,7 @@
 'use strict'
 var Module = require('module')
 var assert = require('assert')
-var process = require('process')
+// var process = require('process')
 var fs = require('fs')
 var isNode = require('./is/node')
 var _isArray = require('lodash.isarray')
