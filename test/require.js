@@ -85,7 +85,6 @@ test('require', function (t) {
     pkg = require('specialfile')
     t.ok(pkg.isFile, 'should require file using mapped string')
   } catch (e) {
-    console.log('err', e)
     t.fail('crashed when requiring mapped string')
   }
 
