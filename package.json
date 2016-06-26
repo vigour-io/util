@@ -65,6 +65,7 @@
   "devDependencies": {
     "standard": "^7.0.1",
     "browserify": "^13.0.0",
+    "vigour-performance": "^1.0.0",
     "coveralls": "^2.11.9",
     "istanbul": "^0.4.3",
     "nightmare": "^2.2.0",

@@ -37,7 +37,6 @@ function define () {
 }
 
 function extend (target, val) {
-  // support deep
   for (let key in val) {
     let type = typeof val[key]
     if (type === 'object') {
@@ -56,6 +55,7 @@ function extend (target, val) {
   }
 }
 
+// here were going to make it ultra fast by chekcing args .length
 function createExtension (val, target) {
   return function extension () {
     const len = arguments.length

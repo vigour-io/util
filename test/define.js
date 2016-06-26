@@ -60,7 +60,7 @@ test('define', (t) => {
 })
 
 test('define - extend', (t) => {
-  t.plan(2)
+  t.plan(3)
   var obj = {}
   define.call(obj, {
     method (number) {
@@ -76,7 +76,6 @@ test('define - extend', (t) => {
     }
   })
   t.equal(obj.method(100), 2000, 'extended "method"')
-
   try {
     define.call(obj, {
       extend: { method: true }
@@ -88,4 +87,50 @@ test('define - extend', (t) => {
       'throws error on incorrect type'
     )
   }
+
+  obj.render = {}
+  define.call(obj.render, {
+    state (number) {
+      return number * 2
+    }
+  })
+
+  define.call(obj, {
+    extend: {
+      render: {
+        state (extend, number) {
+          return extend(number) * 10
+        }
+      }
+    }
+  })
+  t.equal(obj.render.state(100), 2000, 'nested extended "method"')
+})
+
+test('define - extend - base', (t) => {
+  var Base = require('vigour-base')
+  var b = new Base()
+  b.define({
+    extend: {
+      set (set, val, stamp) {
+        this._last = val
+        return set.call(this, val, stamp)
+      }
+    }
+  })
+  b.set({ field: true })
+  t.equal('field' in b, true, 'set overwritten correctly for base')
+  var c = new b.Constructor({
+    define: {
+      extend: {
+        set (set, val, stamp) {
+          return set.call(this, val, stamp)
+        }
+      }
+    }
+  })
+  c.set({ bla: true })
+  t.same(c._last, { bla: true }, 'inherits first extension')
+  t.equal('bla' in c, true, 'set overwritten correctly for base')
+  t.end()
 })
