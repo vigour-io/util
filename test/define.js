@@ -111,6 +111,15 @@ test('define - extend - base', (t) => {
   var Base = require('vigour-base')
   var b = new Base()
   b.define({
+    method () {
+      // never return "arguments" its a v8 hazzard!
+      const len = arguments.length
+      const args = new Array(len)
+      for (let i = 0; i < len; i++) {
+        args[i] = arguments[i]
+      }
+      return args
+    },
     extend: {
       set (set, val, stamp) {
         this._last = val
@@ -132,5 +141,19 @@ test('define - extend - base', (t) => {
   c.set({ bla: true })
   t.same(c._last, { bla: true }, 'inherits first extension')
   t.equal('bla' in c, true, 'set overwritten correctly for base')
+  c.define({
+    extend: {
+      args: true,
+      method (method) {
+        const len = arguments.length
+        const args = new Array(len - 1)
+        for (let i = 1; i < len; i++) {
+          args[i - 1] = arguments[i]
+        }
+        return method.apply(this, args)
+      }
+    }
+  })
+  t.same(c.method(1, 2, 3, 4, 5), [ 1, 2, 3, 4, 5 ], 'using the args: true flag')
   t.end()
 })

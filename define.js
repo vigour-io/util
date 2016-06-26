@@ -40,8 +40,8 @@ function extend (target, val) {
   var many
   if ('args' in val) {
     many = true
+    delete val.args
   }
-
   for (let key in val) {
     let type = typeof val[key]
     if (type === 'object') {
