@@ -3,7 +3,7 @@ var test = require('tape')
 var isNode = require('../is/node')
 
 test('require', function (t) {
-  t.plan(10)
+  t.plan(11)
   var enhanceRequire = require('../require')
   var count = 0
   try {
@@ -78,7 +78,7 @@ test('require', function (t) {
   }
 
   enhanceRequire({
-    map: {'specialfile': './_files/filetorequire'}
+    map: {'specialfile': './test/_files/filetorequire'}
   })
 
   try {

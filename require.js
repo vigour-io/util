@@ -1,7 +1,6 @@
 'use strict'
 var Module = require('module')
 var assert = require('assert')
-var fs = require('fs')
 var isNode = require('./is/node')
 var originalRequire
 
@@ -23,8 +22,8 @@ if (isNode) {
  */
 
 function enhanceRequire (_options) {
-  var options = _options || {}
-  var require = function require (path) {
+  const options = _options || {}
+  const require = function require (path) {
     assert(typeof path === 'string', 'path must be a string')
     assert(path, 'missing path')
     var next = () => {
@@ -35,16 +34,13 @@ function enhanceRequire (_options) {
     } else {
       const mapped = options.map && options.map[path]
       if (mapped) {
-        // TODO research why the string mapping doesn't work
         if (typeof mapped === 'string') {
           path = mapped
-          console.log('haha jaja pathc is', path)
+          return originalRequire(process.cwd() + '/' + mapped)
         } else {
           return mapped
         }
       }
-
-      // console.log(;ok)
       return next(path)
     }
   }
