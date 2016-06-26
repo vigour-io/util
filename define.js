@@ -37,35 +37,81 @@ function define () {
 }
 
 function extend (target, val) {
+  var many
+  if ('args' in val) {
+    many = true
+  }
+
   for (let key in val) {
     let type = typeof val[key]
     if (type === 'object') {
       let value = {}
       let obj = val[key]
       for (let i in obj) {
-        value[i] = createExtension(obj[i], target[key][i])
+        value[i] = createExtension(obj[i], target[key][i], many)
       }
       val[key] = (target.define || define).call(target, { [key]: { value } })
     } else if (type !== 'function') {
       throw new Error(`Expect function for extension "${key}"`)
     } else {
       val[key] = (target.define || define)
-      .call(target, { [key]: createExtension(val[key], target[key]) })
+      .call(target, { [key]: createExtension(val[key], target[key], many) })
     }
   }
 }
 
-// here were going to make it ultra fast by chekcing args .length
-function createExtension (val, target) {
-  return function extension () {
-    const len = arguments.length
-    const args = new Array(len + 1)
-    // optimize by checking arguments.length, make an option with variable arguments
-    // default just ignores those (so its fast)
-    args[0] = target
-    for (let i = 0; i < len; i++) {
-      args[i + 1] = arguments[i]
+function genOptmized (val, target, len) {
+  const types = [
+    function (a) {
+      return val.call(this, target, a)
+    },
+    function (a, b) {
+      return val.call(this, target, a, b)
+    },
+    function (a, b, c) {
+      return val.call(this, target, a, b, c)
+    },
+    function (a, b, c, d) {
+      return val.call(this, target, a, b, c, d)
+    },
+    function (a, b, c, d, e) {
+      return val.call(this, target, a, b, c, d, e)
+    },
+    function (a, b, c, d, e, f) {
+      return val.call(this, target, a, b, c, d, e, f)
+    },
+    function (a, b, c, d, e, f, g) {
+      return val.call(this, target, a, b, c, d, e, f, g)
+    },
+    function (a, b, c, d, e, f, g, h) {
+      return val.call(this, target, a, b, c, d, e, f, g, h)
     }
-    return val.apply(this, args)
+  ]
+  return types[len]
+}
+
+// here were going to make it ultra fast by chekcing args .length
+function createExtension (val, target, many) {
+  var ret
+  if (!many) {
+    const len = target.length - 1
+    if (len > 8) {
+      many = true
+    } else {
+      ret = genOptmized(val, target, len)
+    }
   }
+  if (many) {
+    ret = function () {
+      const len = arguments.length
+      const args = new Array(len + 1)
+      args[0] = target
+      for (let i = 0; i < len; i++) {
+        args[i + 1] = arguments[i]
+      }
+      return val.apply(this, args)
+    }
+  }
+  Object.defineProperty(ret, 'name', { value: target.name })
+  return ret
 }

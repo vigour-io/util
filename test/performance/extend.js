@@ -4,11 +4,17 @@ const Base = require('vigour-base')
 const amount = 1e6
 
 function vanilla () {
-  const a = new Base()
-  const _set = a.set
-  Object.defineProperty(a, 'set', {
-    value () {
-      return _set.apply(this, arguments)
+  const a = new Base({
+    define: {
+      method (val) {
+        return val
+      }
+    }
+  })
+  const method = a.method
+  Object.defineProperty(a, 'method', {
+    value (val) {
+      return method.call(this, val)
     }
   })
   for (let i = 0; i < amount; i++) {
@@ -19,13 +25,20 @@ function vanilla () {
 function extend () {
   const a = new Base({
     define: {
-      extend (set, val, stamp) {
-        return set.call(this, val, stamp)
+      method (val) {
+        return val
+      }
+    }
+  })
+  a.define({
+    extend: {
+      method (method, val) {
+        return method.call(this, val)
       }
     }
   })
   for (let i = 0; i < amount; i++) {
-    a.set(i)
+    a.method(i)
   }
 }
 
