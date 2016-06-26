@@ -1,8 +1,8 @@
 'use strict'
 var Module = require('module')
 var assert = require('assert')
-// var process = require('process')
-var fs = require('fs')
+// var process = require('process') -- never require process its a global
+// var fs = require('fs')
 var isNode = require('./is/node')
 var _isArray = require('lodash.isarray')
 var _isFunction = require('lodash.isfunction')
