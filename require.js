@@ -1,14 +1,8 @@
 'use strict'
 var Module = require('module')
 var assert = require('assert')
-// var process = require('process') -- never require process its a global
-// var fs = require('fs')
+var fs = require('fs')
 var isNode = require('./is/node')
-var _isArray = require('lodash.isarray')
-var _isFunction = require('lodash.isfunction')
-var _isRegExp = require('lodash.isregexp')
-var _isString = require('lodash.isstring')
-
 var originalRequire
 
 if (isNode) {
@@ -41,15 +35,16 @@ function enhanceRequire (_options) {
     } else {
       const mapped = options.map && options.map[path]
       if (mapped) {
-        return mapped
         // TODO research why the string mapping doesn't work
-        // if (typeof mapped === 'string') {
-        //   path = mapped
-        //   console.log('haha jaja pathc is', path)
-        // } else {
-        //   return mapped
-        // }
+        if (typeof mapped === 'string') {
+          path = mapped
+          console.log('haha jaja pathc is', path)
+        } else {
+          return mapped
+        }
       }
+
+      // console.log(;ok)
       return next(path)
     }
   }
@@ -59,7 +54,8 @@ function enhanceRequire (_options) {
 
 function exclude (optionsExclude, path) {
   if (optionsExclude) {
-    if (_isArray(optionsExclude)) {
+    const type = typeof optionsExclude
+    if (optionsExclude instanceof Array) {
       let excludeIt = false
       let len = optionsExclude.length
       for (let i = 0; i < len && !excludeIt; i += 1) {
@@ -70,11 +66,11 @@ function exclude (optionsExclude, path) {
       if (excludeIt) {
         return true
       }
-    } else if (_isFunction(optionsExclude) && optionsExclude(path)) {
+    } else if (type === 'function' && optionsExclude(path)) {
       return true
-    } else if (_isRegExp(optionsExclude) && optionsExclude.test(path)) {
+    } else if (optionsExclude instanceof RegExp && optionsExclude.test(path)) {
       return true
-    } else if (_isString(optionsExclude) && path.indexOf(optionsExclude) !== -1) {
+    } else if (type === 'string' && path.indexOf(optionsExclude) !== -1) {
       return true
     }
   }

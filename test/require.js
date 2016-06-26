@@ -1,5 +1,4 @@
 'use strict'
-
 var test = require('tape')
 var isNode = require('../is/node')
 
@@ -78,18 +77,17 @@ test('require', function (t) {
     t.fail('crashed when requiring mapped object')
   }
 
-  // TODO research why string map doesnt work and then maybe put back this feature
-  // enhanceRequire({
-  //   map: {'specialfile': './filetorequire'}
-  // })
-  //
-  // try {
-  //   pkg = require('specialfile')
-  //   t.ok(pkg.isFile, 'should require file using mapped string')
-  // } catch (e) {
-  //   console.log('err', e)
-  //   t.fail('crashed when requiring mapped string')
-  // }
+  enhanceRequire({
+    map: {'specialfile': './_files/filetorequire'}
+  })
+
+  try {
+    pkg = require('specialfile')
+    t.ok(pkg.isFile, 'should require file using mapped string')
+  } catch (e) {
+    console.log('err', e)
+    t.fail('crashed when requiring mapped string')
+  }
 
   enhanceRequire.restore()
   count = 0
