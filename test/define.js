@@ -154,6 +154,6 @@ test('define - extend - base', (t) => {
       }
     }
   })
-  t.same(c.method(1, 2, 3, 4, 5), [ 1, 2, 3, 4, 5 ], 'using the args: true flag')
+  t.same(c.method(1, 2, 3, 4, 5), [ 1, 2, 3, 4, 5 ], 'using the "args:true" flag')
   t.end()
 })
