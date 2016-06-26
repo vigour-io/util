@@ -27,6 +27,7 @@ if (isNode) {
  * - + {*boolean*} **options.package** : set to `true` to convert `require('package.json')` to `JSON.parse(require(process.cwd() + '/package.json'))`
  * - + {*string|regexp|function|array*} **options.exclude** : paths containing the specified string, or matching the specified regexp, or for which specified function returns `true`, will be excluded. If an array is provided, each element is treated exactly the same as `options.exclude` and only paths which aren't excluded by any item will be `require`d.
  */
+
 function enhanceRequire (_options) {
   var options = _options || {}
   var require = function require (path) {
@@ -35,17 +36,19 @@ function enhanceRequire (_options) {
     var next = () => {
       return Module.prototype.require.next.apply(this, arguments)
     }
-    // This is dirty but probably the best solution for now
-    if (options.package && path === 'package.json') {
-      var pckg = fs.readFileSync(process.cwd() + '/package.json')
-      return JSON.parse(pckg.toString())
-    }
     if (exclude(options.exclude, path, next)) {
       return {}
     } else {
-      if (path === 'package.json') {
-        console.log('find top package.json not doing it now.. do it soon')
-        path = './package.json'
+      const mapped = options.map && options.map[path]
+      if (mapped) {
+        return mapped
+        // TODO research why the string mapping doesn't work
+        // if (typeof mapped === 'string') {
+        //   path = mapped
+        //   console.log('haha jaja pathc is', path)
+        // } else {
+        //   return mapped
+        // }
       }
       return next(path)
     }
