@@ -90,7 +90,6 @@ function genOptmized (val, target, len) {
   return types[len]
 }
 
-// here were going to make it ultra fast by chekcing args .length
 function createExtension (val, target, many) {
   var ret
   if (!many) {
