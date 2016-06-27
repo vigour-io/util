@@ -112,6 +112,6 @@ function createExtension (val, target, many) {
       return val.apply(this, args)
     }
   }
-  Object.defineProperty(ret, 'name', { value: target.name })
+  // Object.defineProperty(ret, 'name', { value: target.name })
   return ret
 }
