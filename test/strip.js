@@ -2,7 +2,7 @@
 const test = require('tape')
 const stripFormatting = require('../strip/formatting')
 
-test('keyHash', (t) => {
+test('strip formatting', (t) => {
   const code = `
     <div>
       <b>
