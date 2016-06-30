@@ -3,12 +3,12 @@
 /**
  * @id hash
  * @function hash
- * Hashing utility optimized for speed, not collision avoidance. Produces alpha-numeric hashes between 5 and 7 characters long inclusively.
+ * Murmur hash - optimized for performance, not collision avoidance. Alpha-numeric hashes between 5 and 7 characters long inclusively.
  * @param {string} key - the string to hash
  * @param {number} seed - a seed for hashing
  * @returns {string} hashOfKey - The created hash
  */
-exports = module.exports = function (key, seed) {
+module.exports = function (key, seed) {
   var remainder, bytes, h1, h1b, c1, c2, k1, i
   seed = 1
   remainder = key.length & 3 // key.length % 4
@@ -38,6 +38,7 @@ exports = module.exports = function (key, seed) {
 
   k1 = 0
 
+  // @todo: replace with if else (faster)
   switch (remainder) {
     case 3: k1 ^= (key.charCodeAt(i + 2) & 0xff) << 16 //eslint-disable-line
     case 2: k1 ^= (key.charCodeAt(i + 1) & 0xff) << 8 //eslint-disable-line

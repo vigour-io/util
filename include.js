@@ -8,6 +8,8 @@
  * @param thing - the thing to be included in the array. If object or array, it will go through it and add all values to the target array.
  * @returns {Array} included - Array representing the included items (duplicates removed)
  */
+console.error('hello')
+
 var include = module.exports = function include (target, thing) {
   return typeof thing === 'object'
     ? includeList(target, thing)
