@@ -2,6 +2,7 @@
 const test = require('tape')
 const Base = require('vigour-base')
 const define = require('../define')
+define.call(Base.prototype, { define: define })
 
 test('define', (t) => {
   t.plan(6)
