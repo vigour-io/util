@@ -48,20 +48,25 @@ function extend (target, val) {
       let value = {}
       let obj = val[key]
       for (let i in obj) {
-        value[i] = createExtension(obj[i], target[key][i], many)
+        value[i] = extension(obj[i], target[key][i], many)
       }
       val[key] = (target.define || define).call(target, { [key]: { value } })
     } else if (type !== 'function') {
       throw new Error(`Expect function for extension "${key}"`)
     } else {
-      val[key] = (target.define || define)
-      .call(target, { [key]: createExtension(val[key], target[key], many) })
+      val[key] = (target.define || define).call(
+        target,
+        { [key]: extension(val[key], target[key], many) }
+      )
     }
   }
 }
 
 function genOptmized (val, target, len) {
   const types = [
+    function () {
+      return val.call(this, target)
+    },
     function (a) {
       return val.call(this, target, a)
     },
@@ -90,27 +95,22 @@ function genOptmized (val, target, len) {
   return types[len]
 }
 
-function createExtension (val, target, many) {
-  var ret
+function extension (val, target, many) {
   if (!many) {
-    const len = target.length - 1
+    const len = target.length
     if (len > 8) {
       many = true
     } else {
-      ret = genOptmized(val, target, len)
+      return genOptmized(val, target, len)
     }
   }
-  if (many) {
-    ret = function () {
-      const len = arguments.length
-      const args = new Array(len + 1)
-      args[0] = target
-      for (let i = 0; i < len; i++) {
-        args[i + 1] = arguments[i]
-      }
-      return val.apply(this, args)
+  return function () {
+    const len = arguments.length
+    const args = new Array(len + 1)
+    args[0] = target
+    for (let i = 0; i < len; i++) {
+      args[i + 1] = arguments[i]
     }
+    return val.apply(this, args)
   }
-  // Object.defineProperty(ret, 'name', { value: target.name })
-  return ret
 }

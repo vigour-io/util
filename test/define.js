@@ -108,8 +108,7 @@ test('define - extend', (t) => {
 })
 
 test('define - extend - base', (t) => {
-  var Base = require('vigour-base')
-  var b = new Base()
+  const b = new Base()
   b.define({
     method () {
       // never return "arguments" its a v8 hazzard!
@@ -129,7 +128,7 @@ test('define - extend - base', (t) => {
   })
   b.set({ field: true })
   t.equal('field' in b, true, 'set overwritten correctly for base')
-  var c = new b.Constructor({
+  const c = new b.Constructor({
     define: {
       extend: {
         set (set, val, stamp) {
@@ -155,5 +154,47 @@ test('define - extend - base', (t) => {
     }
   })
   t.same(c.method(1, 2, 3, 4, 5), [ 1, 2, 3, 4, 5 ], 'using the "args:true" flag')
+
+  for (let i = 0; i < 10; i++) {
+    extendTest(i, t)
+  }
   t.end()
 })
+
+function extendTest (amount, t) {
+  const b = new Base()
+  const args = []
+  for (let i = 0; i < amount; i++) {
+    args.push('a' + i)
+  }
+  const fnArgs = `(${args.join(',')})`
+  const fn = args.length ? new Function( //eslint-disable-line
+  `return function ${fnArgs} {
+    var len = arguments.length
+    var args = new Array(len)
+    for (var i = 0; i < len; i++) {
+      args[i] = arguments[i]
+    }
+    return args
+  }`)() : function () {}
+  b.define({ method: fn })
+  const c = new b.Constructor({
+    define: {
+      extend: {
+        method (method) {
+          const len = arguments.length
+          if (len > 1) {
+            const args = new Array(len - 1)
+            for (let i = 1; i < len; i++) {
+              args[i - 1] = arguments[i]
+            }
+            return method.apply(this, args)
+          } else {
+            return method.call(this)
+          }
+        }
+      }
+    }
+  })
+  t.same(c.method.apply(c, args), args.length ? args : void 0, `return correct for ${amount} arguments`)
+}

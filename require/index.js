@@ -1,15 +1,8 @@
 'use strict'
 var Module = require('module')
 var assert = require('assert')
-var isNode = require('./is/node')
-var originalRequire
-
-if (isNode) {
-  originalRequire = Module.prototype.require
-  module.exports = enhanceRequire
-} else { // let browserify (or similar) do it
-  module.exports = enhanceRequireMock
-}
+var originalRequire = Module.prototype.require
+module.exports = enhanceRequire
 
 /**
  * @id require.enhanceRequire
@@ -72,14 +65,11 @@ function exclude (optionsExclude, path) {
   }
   if (/\.less/.test(path)) {
     return true
-  }
-  if (/\.css/.test(path)) {
+  } else if (/\.css/.test(path)) {
     return true
-  }
-  if (/\.scss/.test(path)) {
+  } else if (/\.scss/.test(path)) {
     return true
-  }
-  if (/\.sass/.test(path)) {
+  } else if (/\.sass/.test(path)) {
     return true
   }
   return false
@@ -92,11 +82,4 @@ function exclude (optionsExclude, path) {
  */
 enhanceRequire.restore = function restoreRequire () {
   Module.prototype.require = originalRequire
-}
-
-function enhanceRequireMock (options) {
-  // Do nothing
-}
-enhanceRequireMock.restore = function restoreRequireMock () {
-  // Do nothing
 }

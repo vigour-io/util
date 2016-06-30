@@ -1,10 +1,10 @@
 'use strict'
-var test = require('tape')
-var isNode = require('../is/node')
+const test = require('tape')
+const isNode = require('../is/node')
 
 test('require', function (t) {
   t.plan(11)
-  var enhanceRequire = require('../require')
+  const enhanceRequire = require('../require')
   var count = 0
   try {
     require('./_files/styles.less')
@@ -15,7 +15,7 @@ test('require', function (t) {
 
   enhanceRequire()
   try {
-    var file = require('./_files/filetorequire')
+    const file = require('./_files/filetorequire')
     t.ok(file.isFile, 'should have required the file normally')
   } catch (e) {
     t.fail('failed to require a normal file:' + e.stack)
@@ -26,6 +26,8 @@ test('require', function (t) {
   try {
     require('./_files/styles.less')
     require('./_files/styles.css')
+    require('./_files/styles.scss')
+    require('./_files/styles.sass')
   } catch (e) {
     count += 1
   }
@@ -54,7 +56,7 @@ test('require', function (t) {
   t.equals(count, 0, 'makes `require` ignore excluded regexp')
 
   enhanceRequire({
-    exclude: function exclude (item) {
+    exclude (item) {
       return item.indexOf('/scratch/') !== -1
     }
   })

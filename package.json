@@ -45,6 +45,9 @@
     "Youri Daamen <youri@vigour.io>",
     "Marcus Besjes <marcus@vigour.io>"
   ],
+  "browser": {
+    "./require/index.js": "./require/browser.js"
+  },
   "browserify": {
     "transform": [
       [
