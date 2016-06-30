@@ -1,6 +1,6 @@
 {
   "name": "vigour-util",
-  "version": "3.2.1",
+  "version": "3.3.0",
   "author": "Vigour.io <dev@vigour.io>",
   "scripts": {
     "test": "NODE_ENV=test node test | tap-difflet && vtest test | tap-difflet && standard",
@@ -33,7 +33,7 @@
   },
   "main": "./",
   "browser": {
-    "./uuid/": "./uuid/browser.js"
+    "./require/index.js": "./require/browser.js"
   },
   "homepage": "https://github.com/vigour-io/util",
   "keywords": [
@@ -45,9 +45,6 @@
     "Youri Daamen <youri@vigour.io>",
     "Marcus Besjes <marcus@vigour.io>"
   ],
-  "browser": {
-    "./require/index.js": "./require/browser.js"
-  },
   "browserify": {
     "transform": [
       [
