@@ -1,5 +1,5 @@
 'use strict'
-var isNumber = require('./number')
+const isNumber = require('./number')
 
 /**
  * @id isNumberLike
@@ -9,10 +9,11 @@ var isNumber = require('./number')
  * @returns {boolean} looksLikeNumber - `true` if `val` looks like a number, `false` otherwise
  */
 module.exports = function isNumberLike (val) {
+  // fail
   if (val === null || val === void 0 || val === false) {
     return false
   }
-  var length = val.length
+  const length = val.length
   if (!length) {
     return isNumber(val)
   }
@@ -20,6 +21,7 @@ module.exports = function isNumberLike (val) {
   // charAt is faster in v8
   if (val.charAt(0) === '-') {
     if (length === 1) {
+      // fail do it
       return false
     }
     i = 1

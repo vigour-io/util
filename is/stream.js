@@ -7,7 +7,7 @@ var isStream = require('is-stream')
  * @param {object} val - the object to check
  * @returns {boolean} stream - `true` if `val` is a stream, `false` otherwise
  */
-module.exports = isStream
+exports = module.exports = isStream
 
 /**
  * @id isStream.readable
