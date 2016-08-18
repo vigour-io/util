@@ -62,7 +62,7 @@ function extend (target, val) {
   }
 }
 
-function genOptmized (val, target, len) {
+function generateOptimized (val, target, len) {
   const types = [
     function () {
       return val.call(this, target)
@@ -97,11 +97,11 @@ function genOptmized (val, target, len) {
 
 function extension (val, target, many) {
   if (!many) {
-    const len = target.length
+    const len = Math.max(target.length, val.length - 1)
     if (len > 8) {
       many = true
     } else {
-      return genOptmized(val, target, len)
+      return generateOptimized(val, target, len)
     }
   }
   return function () {
