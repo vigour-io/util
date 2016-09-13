@@ -1,6 +1,6 @@
 {
   "name": "vigour-util",
-  "version": "3.3.1",
+  "version": "3.3.2",
   "author": "Vigour.io <dev@vigour.io>",
   "scripts": {
     "test": "NODE_ENV=test node test | tap-difflet && vtest test | tap-difflet && standard",
@@ -27,7 +27,7 @@
     "brisky-is-plain-obj": "^1.0.1",
     "brisky-is-removed": "^1.0.0",
     "brisky-recorder": "^1.0.0",
-    "define-configurable": "^1.0.0",
+    "define-configurable": "^1.0.1",
     "descriptors": "^1.0.2",
     "enhance-require": "^1.0.0",
     "is-buffer": "^1.1.3",
