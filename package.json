@@ -1,6 +1,6 @@
 {
   "name": "vigour-util",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "author": "Vigour.io <dev@vigour.io>",
   "scripts": {
     "test": "NODE_ENV=test node test | tap-difflet && vtest test | tap-difflet && standard",
