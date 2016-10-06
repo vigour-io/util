@@ -11,6 +11,8 @@ vigour-util name | npm package
 descriptors | [**descriptors**](npmjs.com/package/descriptors)
 hash | [**quick-hash**](npmjs.com/package/quick-hash)
 is/hash | [**is-quick-hash**](npmjs.com/package/is-quick-hash)
+is/email | [**nice-is-email**](npmjs.com/package/nice-is-email)
+is/url | [**nice-is-url**](npmjs.com/package/nice-is-url)
 is/numberlike | [**is-number-like**](npmjs.com/package/is-number-like)
 require | [**enhance-require**](npmjs.com/package/enhance-require)
 is/touch | [**is-touch**](npmjs.com/package/is-touch)
